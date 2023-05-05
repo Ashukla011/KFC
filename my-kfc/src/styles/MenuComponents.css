@@ -1,0 +1,43 @@
+
+.periperi,.chickenrolls,.chickenbuckets,.biryanibuckets,.boxmeals,.burgers,.snacks,.beverages{
+    text-decoration: none;
+    border-bottom: none;
+    color:grey;
+    font-family: Helvetica;
+    font-weight: lighter;
+    font-size: 14px;
+   
+}
+.AllLinks{
+    margin-top: 200px;
+}
+.kfcmenu{
+    font-size: 48px;
+    font-family: fantasy ;
+}
+.Menubox{
+    display: flex;
+    justify-content: space-around;
+    gap:20px
+}
+.Meals{
+    width: 70%;
+}
+
+@media screen and (max-width:900px) {
+    .kfcmenu{
+        display: none;
+    }
+    .img{
+        display: none;
+    }
+    .AllLinks{
+        margin-top: 0;
+        display: flex;
+    }
+    .Menubox{
+        display: grid;
+        justify-content: space-around;
+        gap:20px
+    }
+}

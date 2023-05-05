@@ -1,0 +1,86 @@
+*{
+    margin :0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+.Navbar{
+    /* margin: 50px; */
+    display: flex;
+    justify-content: space-around;
+    height: 75px;
+    width: 100%;
+    /* position: fixed; */
+    background-color: #000;
+}
+.nav-link{
+   
+    display: flex;
+    justify-content: flex-end;
+    list-style: none;
+    
+}
+.Menu,.Deals,.Sign{
+     border-bottom: none;
+     text-decoration: none;
+     color:#EEE;
+     font-size: 20px;
+     margin:15px 10px ;
+     padding:10px 20px ;
+     cursor: pointer;
+}
+.cart{
+    list-style: none;
+    border-bottom: none;
+    text-decoration: none;
+    color: #EEE;
+    font-size: 20px;
+    margin:15px 10px ;
+    padding:10px 20px ;
+    cursor: pointer;
+}
+.logo{
+    font-size: 20px;
+    margin:15px 10px ;
+    padding:10px 20px ;
+    cursor: pointer;
+}
+.Sign{
+    border: 1px solid #EEE;
+    height: 50px;
+}
+.mobile-munu-icon{
+    display: none;
+}
+
+@media screen and (max-width:900px) {
+    .mobile-munu-icon{
+        display: block;
+        margin:10px 10px ;
+        padding:10px 20px ;
+        cursor: pointer;
+        font-size: 40px;
+        background-color: #000;
+        color:#EEE;
+        border: none;
+    }
+    .nav-link{
+        display: none;
+        margin-top: 50px ;
+
+
+        
+    }
+    .Menu,.Deals,.Sign{
+        color:#000;
+        text-align: center;
+        padding:32px;
+        transition: all 0.5px;
+        font-size: 40px;
+        font-family: Monospace ;
+        list-style:none;
+        margin:15px 10px;
+        padding:10px 20px;
+      
+   }
+
+}
