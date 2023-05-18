@@ -1,0 +1,79 @@
+.MainBox{
+    display: grid;
+    gap:10px;
+    grid-template-columns: repeat(3,1fr);
+
+}
+.Name{
+    margin-left: 20px;
+}
+
+.first{
+    border-radius: 10px;
+   height: 500px;
+   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+.img2{
+    border-radius: 10px;
+    width: 100%;
+}
+.icon_type_quantity{
+    display: flex;
+    gap:5px;
+    margin-left: 20px;
+   
+}
+.icon_type_quantity img{
+    width: 20px;
+}
+
+.dis{
+    font-size: 16px; 
+     font-family: Helvetica;
+     margin-left: 20px;
+    color:#202124 
+}
+
+.btn {
+    text-align: center;
+    background-color: #DC143C;
+    color: #eee;
+    border-radius: 20px;
+    width: 200px;
+    height: 40px;
+    border:none;
+    font-size: 18px;
+    font-family:  Helvetica;
+    margin-left: 40px;
+}
+
+@media screen and (max-width:900px) {
+    .MainBox{
+        display: grid;
+        gap:10px;
+        grid-template-columns: repeat(2,1fr);
+        
+    }
+    .first{
+        height: 550px;
+    }
+    .btn{
+        margin-left:50px
+    }
+}
+@media screen and (max-width:500px) {
+    .MainBox{
+        display: grid;
+        gap:10px;
+        grid-template-columns: repeat(1,1fr);
+        
+    
+    }
+ 
+    .first{
+        height: 550px;
+    }
+    .btn{
+        margin-left:50px
+    }
+}

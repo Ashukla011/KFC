@@ -1,16 +1,31 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-scroll'
+import {Link } from 'react-scroll'
 import '../styles/MenuComponents.css'
 import { PeriPeri } from './PeriPeri'
+import { MasterComponents } from '../Copments2/MasterComponents'
+import { ChickenRolls } from './ChickenRolls'
+import { ChieckenBucket } from './ChieckenBucket'
+import { BiryaniBuckets } from './BiryaniBuckets'
+import { BoxMeals } from './BoxMeals'
+import { Burgers } from './Burgers'
+import { Snacks } from './Snacks'
+import { Beverages } from './Beverages'
 export const MenuComponents = () => {
     
 
   return (
+    <>
+    <div className='orderHeading'>
+      <h1>LET'S ORDER FOR DELIVERY, PICK UP, OR DINE-IN</h1>
+    </div>
     <div className='Menubox'>
         <div className='AllLinks'>
-         
+
             <img  className="img" src='https://online.kfc.co.in/static/media/Stripes_Small_OffersIcon.87fc6256.svg' alt=''/>
+            
             <h1 className='kfcmenu'>KFC MENU</h1>
+            <br/>
+            <br/>
             <Link to='PERI_PERI_MATCH_SPECIALS' smooth={true}  duration={500} className='periperi'>
                 <h3 >PERI PERI MATCH SPECIALS</h3>
             </Link>
@@ -45,44 +60,38 @@ export const MenuComponents = () => {
             </Link>
         </div>
         <div className='Meals' >
-         <div id='PERI_PERI_MATCH_SPECIALS'>
-          <h1>PERI PERI MATCH SPECIALS</h1>
-          <PeriPeri/>
-         </div>
-         <br/>
-         <br/>
-         <div id="CHICKEN_ROLLS">
-          <h1>CHICKEN ROLLS</h1>
-         </div>
-         <br/>
-         <br/>
-         <div id="CHICKEN_BUCKETS">
-          <h1>CHICKEN BUCKETS</h1>
-          
-         </div>
-         <br/>
-         <br/>
-          <div id="BOX_MEALS">
-            <h1>BOX MEALS</h1>
-          </div>
-          <br/>
-          <br/>
-        <div id='BURGERS'>
-          <h1>BURGERS</h1>
-        </div>
-        <br/>
-        <br/>
-        <div id="SNACKS">
-          <h1>SNACKS</h1>
-        </div>
-        <br/>
-        <br/>
-        <div id='BEVERAGES'>
-          <h1>BEVERAGES</h1>
-          <br/>
-          <br/>
-        </div>
+         <div id='PERI_PERI_MATCH_SPECIALS'><PeriPeri/></div>
+            <br/>
+            <br/>
+            <br/>
+         <div id="CHICKEN_ROLLS"><ChickenRolls/></div>
+         
+            <br/>
+            <br/>
+            <br/>
+         <div id="CHICKEN_BUCKETS"><ChieckenBucket/></div>
+            <br/>
+            <br/>
+            <br/>
+        <div id="BIRYANI_BUCKETS"><BiryaniBuckets/></div>
+             <br/>
+            <br/>
+            <br/>
+        <div id='BOX_MEALS'><BoxMeals/></div>
+            <br/>
+            <br/>
+            <br/>
+        <div id="BURGERS"><Burgers/></div>
+            <br/>
+            <br/>
+            <br/>
+        <div id='SNACKS'><Snacks/></div>
+            <br/>
+            <br/>
+            <br/>
+        <div id='BEVERAGES'><Beverages/> </div>
         </div>
     </div>
+    </>
   )
 }

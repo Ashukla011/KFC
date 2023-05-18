@@ -13,31 +13,43 @@ export const PeriPeri = () => {
     useEffect(()=>{
         getData()
     },[])
+
+// let KFCProduct=JSON.parse(localStorage.getItem('KFC'))||[]
+    const StoreData=(el)=>{
+        let KFCProduct=JSON.parse(localStorage.getItem('KFC'))||[]
+        KFCProduct.push(el)
+     localStorage.setItem("KFC",JSON.stringify(KFCProduct))
+
+    }
+
   return (
     <div>
-        <div className='periperi2'>
+        <div className='box1'>
+        <h1 style={{fontFamily:"Helvetica",fontSize:"30px"}}>PERI PERI MATCH SPECIALS</h1>
+        <div className='box2'>
             {
             data.map((el)=>(
-                <div key={el.id} className='box'>
+                <div key={el.id} className='box3'>
                     <img src={el.image} alt='' style={{width:"100%"}}/>
                     <br/>
-                    <div className='box2'>{el.name}</div>
-                    <div style={{display:'flex',gap:"5px"}}>
-                        <img src={el.icon}/>
+                    <div className='Name'>{el.name}</div>
+                    <div className='icon_type_quantity'>
+                        <img src={el.icon} alt=''/>
                         <p> {el.type}</p>
                         <p>Serve {el.quantity}</p>
                     </div>
-                    <div className='box2'>{`₹${el.price}`}</div>
+                    <div className='Name'>{`₹${el.price}`}</div>
                   
                    
                  
                     <p>{el.description}</p>
                     <br></br>
                     <br></br>
-                    <button >Add to Cart</button>
+                    <button className='btn' onClick={()=>StoreData(el)}>Add to Cart</button>
                 </div>
             ))
             }
+            </div>
             </div>
     </div>
   )

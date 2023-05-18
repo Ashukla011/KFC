@@ -1,4 +1,8 @@
-
+.Menubox{
+    display: flex;
+    justify-content: space-around;
+    gap:20px
+}
 .periperi,.chickenrolls,.chickenbuckets,.biryanibuckets,.boxmeals,.burgers,.snacks,.beverages{
     text-decoration: none;
     border-bottom: none;
@@ -6,23 +10,40 @@
     font-family: Helvetica;
     font-weight: lighter;
     font-size: 14px;
-   
+   cursor: pointer;
 }
 .AllLinks{
-    margin-top: 200px;
+    margin-top: 60px;
+    line-height: 30px;
+    left: 80px;
+    position: fixed;
 }
+.orderHeading{
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    background-color: #EEE;
+    color:#202124;
+    font-size: 10px;
+    font-family:  Helvetica; 
+    font-weight: 400;
+    text-align: center;
+}
+
 .kfcmenu{
     font-size: 48px;
     font-family: fantasy ;
 }
-.Menubox{
-    display: flex;
-    justify-content: space-around;
-    gap:20px
-}
+
 .Meals{
+    margin-left: 250px;
     width: 70%;
+    margin-top: 100px;
 }
+/* #PERI_PERI_MATCH_SPECIALS,#CHICKEN_ROLLS
+,#CHICKEN_BUCKETS,
+#BOX_MEALS,#BURGERS,#SNACKS,#BEVERAGES h1{
+    font-size: 20px;
+    font-family:  Helvetica;
+} */
 
 @media screen and (max-width:900px) {
     .kfcmenu{
@@ -32,12 +53,26 @@
         display: none;
     }
     .AllLinks{
-        margin-top: 0;
+        margin-top: 20;
         display: flex;
-    }
-    .Menubox{
-        display: grid;
-        justify-content: space-around;
+        flex-wrap: wrap;
+        left: 0px;
+        position: sticky;
+        color: #202124;
         gap:20px
     }
+    .Menubox{
+        display: block;
+      
+        gap:20px
+    }
+    .Meals{
+        width: 100%;
+        margin-left: 0px;
+    }
+   
+    .periperi,.chickenrolls,.chickenbuckets,.biryanibuckets,.boxmeals,.burgers,.snacks,.beverages{
+       color: #202124;
+    }
 }
+

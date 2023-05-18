@@ -1,0 +1,139 @@
+.OrderHeading{
+    text-align: center;    
+    height: 100px;
+    width: 100%;
+    background-color: #000;
+    color: #EEE;
+    margin-top: 70px;
+   
+}
+.OrderHeading h2{
+    font-family: Arial Black;
+    font-size: 18px;
+    margin: 10px 10px;
+    padding: 25px 0px;
+}
+.box3{
+    background-color: #EEE;
+}
+.Home{
+    overflow: hidden;
+}
+.poster img{
+    width: 100%;
+    height: 400px;
+}
+.Logo{
+    background-color: #EEE;
+}
+.Logo h2{
+    font-family: Arial Black;
+    margin-left: 100px;
+    font-size: 40px;
+}
+.Logo img{
+    font-family: Arial Black;
+    margin-left: 100px;
+}
+.browser_category{
+    display: flex;
+    font-family: Arial Black;
+    margin-top:200px;
+    margin-left: 100px;
+    width: 90%;
+    font-size: 20px;
+    /* border: 1px solid black; */
+    justify-content: space-around;
+
+}
+.browser_category div{
+    width: 70%;
+    height: 0px;
+    margin-top: 20px;
+    border: 1px solid grey;
+  
+}
+.Footer{
+    background-color: #000;
+    margin-top: 150px;
+    width: 100%;
+}
+.AllCategory{
+    display: grid;
+    justify-content: space-around;
+    grid-template-columns: repeat(4,1fr);
+    gap:10px;
+    
+}
+.subCategory{
+    background-color: #EEE;
+    height: 350px;
+    border-radius: 10px;
+     
+}
+.subCategory img{
+    border-radius: 10px;
+}
+.subCategory h4{
+    text-align: center;
+}
+.CategoryName{
+    font-family: Helvetica;
+    color:#202124;
+    font-weight: 400;
+    text-decoration: none;
+    border-bottom: none;
+    font-size: 18px;
+
+}
+.CategoryName img{
+    width: 100%;
+}
+
+@media screen and (max-width:900px) {
+    .OrderHeading{
+        width: 100%;
+    }
+    .poster{
+        width: 100%;
+    }
+    .poster img{
+        width: 100%;
+    }
+    .Logo h2{
+        text-align: center;
+        font-size: 18px;
+    }
+    .Footer{
+        width: 100%;
+    }
+    .browser_category{
+        margin-left: 0px;
+        width: 100%;
+        font-size: 10px;
+    }
+    .browser_category div{
+        width: 30%;
+        height: 0px;
+      
+        margin-top: 10px;
+       
+    }
+    .AllCategory{
+        
+        grid-template-columns: repeat(2,1fr);
+    
+    }
+    .subCategory{
+        height: 250px;
+    }
+}
+@media screen and (max-width:300px) {
+    .AllCategory{
+        
+        grid-template-columns: repeat(1,1fr);
+       
+    
+    }
+   
+}

@@ -1,0 +1,41 @@
+#model {
+    width: fit-content;
+    margin: auto;
+  }
+  #payMHead {
+    display: flex;
+    justify-content: space-between;
+  }
+  #payMHead button {
+    width: 35px;
+    height: 35px;
+    border: none;
+  }
+  .centerdiv {
+    height: 500px;
+    width: 500px;
+    padding: 20px;
+    background-color: #f8f7f5;
+  }
+  
+  .paymentOption {
+    padding: 25px 30px;
+    background-color: white;
+    margin-top: 20px;
+    border: solid gray 1px;
+  }
+  
+  #payMbtn {
+    width: 300px;
+    border-radius: 20px;
+    border: none;
+    padding: 12px;
+    background-color: gray;
+    color: white;
+    margin: auto;
+  }
+  #paybtndiv {
+    width: fit-content;
+    margin: auto;
+    padding: 20px;
+  }
