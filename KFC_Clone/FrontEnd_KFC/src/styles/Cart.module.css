@@ -1,0 +1,134 @@
+
+
+.Logo{
+   margin: 0px 100px;
+}
+.Logo h1{
+    font-size: 35px;
+    font-family: Helvetica;
+    font-weight: 400px;
+}
+
+.same{
+    display: flex;
+    justify-content: space-between;
+}
+.same p{
+    font-size: 16px;
+    font-family: Helvetica;
+    font-weight: 500px;
+}
+.empty img{
+    width: 100%;
+    height: 400px;
+}
+.cartTotal{
+    /* border:1px solid black; */
+    width: 35%;
+    height: 450px;
+    padding:10px 30px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+.cart1{
+
+    display: flex;
+    margin: 20px 10px;
+    /* border:1px solid black; */
+    gap:100px;
+    width:80%;
+    margin: auto;
+
+  }
+.mapData{
+    /* border:1px solid black; */
+    width: 50%;
+}
+.cart2{
+display: flex;
+justify-content: space-around;
+width: 100%;
+margin-top: 10px;
+/* border:1px solid black; */
+background-color: #eee;
+border-radius: 10px;
+
+   
+}
+.cart2 img{
+    width: 20%;
+    border-radius: 10px;
+}
+.btn{
+    text-align: center;
+}
+.btn button{
+    width: 70%;
+    height: 50px;
+    border-radius: 10px;
+    background-color: #DC143D;
+    color:aliceblue;
+    font-size: 18px;
+    font-family: Helvetica;
+    font-weight: 600;
+    border:none
+}
+.Incri_Decri{
+    margin-top: 50px;
+}
+.Incri_Decri .Incri{
+
+    border-radius: 90%;
+    padding:10px ;
+    margin:10px ;
+    font-size: 18px;
+    background-color: white;
+}
+.Incri_Decri .Decri{
+
+    border-radius: 90%;
+    padding:10px ;
+    margin:10px ;
+    background-color: white;
+}
+
+.Incri_Decri .countTotal{
+    border:none;
+    /* background-color: white; */
+}
+.price{
+    margin-top: 60px;
+}
+.remove {
+    border:none;
+    border-bottom: 1px solid black;
+    font-size: 18px;
+    font-weight: 400px;
+    font-family:Helvetica
+
+
+}
+.name{
+    font-size: 18px;
+    font-weight: 400px;
+    font-family:Helvetica
+}
+.RemoveAll{
+    display: flex;
+    justify-content: space-between;
+  gap: 10px;
+
+
+}
+.Btn{
+    width: 40%;
+    height: 40px;
+    border: none;
+    border-radius: 10px;
+    font-size: 20px;
+    font-family: Helvetica;
+    font-weight: 700px;
+}
+.cartTotalNone{
+    display: none;
+}

@@ -1,0 +1,47 @@
+.sign{
+    margin: auto;
+    border: 1px solid black;
+    height: 100vh
+}
+.SignIN{
+    text-align: center;
+    margin:30px;
+    /* border:1px solid black; */
+    width:40%;
+    height: 600px;
+    margin: auto;
+}
+.input{
+    width: 70%;
+    height: 50px;
+   font-size: 20px;
+   font-weight: 600;
+   border: none;
+   border-bottom: 1px solid black;
+
+}
+.h2{
+    font-family: Helvetica;
+    font-size: 20px;
+    font-weight: 700;
+    
+}
+
+.btn1{
+    border: none;
+    padding: 20px 70px;
+    background-color: #000;
+    color: #EEE;
+    border-radius: 20px;
+    font-size: 16px;
+    font-weight: 600;
+}
+.btn2{
+ 
+    padding: 20px 70px;
+    background-color:white;
+    color: #000;
+    border-radius: 20px;
+    font-size: 16px;
+    font-weight: 600;
+}

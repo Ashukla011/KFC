@@ -1,0 +1,210 @@
+.offersImage {
+   width: 100%;
+   border:1px solid black;
+   height: fit-content;
+
+}
+.img{
+   width: 100%;
+  /* height: 290px; */
+}
+.offerHeading {
+  position: absolute;
+  /* border:1px solid white; */
+  
+  left: 550px;
+  top: 300px;
+}
+.offerHeading h1{
+  color: white;
+  font-size: 45px;
+  z-index: 999;
+  font-family: Helvetica;
+}
+
+.img2{
+  margin-left: 200px;
+}
+
+.offerForYou{
+  display: flex;
+  justify-content:space-between;
+  margin-left: 200px;
+}
+.offerForYou h1{
+  color: #000;
+  font-size: 40px;
+  font-family: Helvetica;
+}
+.offerForYou h5{
+  color: #000;
+  font-size: 20px;
+  font-family: Helvetica;
+  text-decoration: underline;
+}
+
+
+.Redeem{
+  width: 90%;
+  height: fit-content;
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  
+  justify-content: center;
+  /* border:1px solid black; */
+  margin: auto;
+
+}
+
+.Redeem div{
+  height: 450px;
+  text-align: center;
+  
+}
+.box1{
+  border-radius: 10px;
+  background-color: #DC143D;
+  text-align: center;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    width: 70%;
+}
+
+.box1 h1{
+ color: white;
+ font-family: Helvetica;
+ font-size: 40px;
+margin: 20px 0px;
+padding: 20px 20px
+
+
+}
+.box1 button{
+  width: 90%;
+  height: 50px;
+  background-color: #DC143D;
+  color: white;
+  border-radius: 20px;
+  border:1px solid white
+}
+.box2{
+  /* border: 1px solid black; */
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  height: fit-content;
+  width: 70%;
+}
+
+.box2 img{
+  width: 100%;
+  border-radius: 10px;
+}
+
+
+.OnePcFree h1{
+  color: #DC143D;
+}
+
+.viewAndRedeem {
+  display: flex;
+  justify-content: space-between;
+}
+
+.viewAndRedeem h4{
+  text-decoration: underline;
+}
+.viewAndRedeem button{
+  width: 50%;
+  height: 40px;
+  border-radius: 20px;
+  /* border: 1px solid black; */
+  background-color: white;
+
+}
+
+
+@media screen and (max-width:1100px)  {
+  .offerHeading{
+    left: 400px;
+    top:250px
+    
+  }
+  .offersImage img{
+ width: 50%;
+  }
+}
+@media screen and (max-width:900px)  {
+  .offerForYou{
+    margin-left: 0px;
+  }
+  .Redeem{
+  
+    height: fit-content;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap:20px;
+    justify-content: center;
+   
+  
+  }
+}
+@media screen and (max-width:800px)  {
+  .offerHeading{
+    left: 250px;
+    top:250px
+
+    
+  }
+  .img2{
+    margin-left: 0px;
+  }
+}
+@media screen and (max-width:610px)  {
+  .offerHeading{
+    left: 100px;
+    top:230px
+    
+  }
+  .offerHeading {
+   width: max-content;
+  }
+  .Redeem{
+   
+    height: fit-content;
+    display: grid;
+    grid-template-columns: repeat(1,1fr);
+    gap:20px;
+    justify-content: center;
+    
+  
+  }
+  .box2{
+    margin-top: 80px;
+   height: fit-content;
+  }
+}
+
+@media screen and (max-width:456px)  {
+  .offerHeading{
+    left: 10px;
+    top:220px
+    
+  }
+  .offerHeading {
+   width: max-content;
+  }
+}
+
+@media screen and (max-width:408px)  {
+  .offerHeading{
+    left: 0px;
+    top:200px
+    
+  }
+  .offerHeading {
+   width: max-content;
+  }
+  .img{
+    width: 100%;
+    /* height: fit-content; */
+  }
+}

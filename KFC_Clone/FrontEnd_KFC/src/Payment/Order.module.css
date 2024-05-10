@@ -1,0 +1,26 @@
+.mainDiv{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    padding: 30px;
+    width: fit-content;
+    margin: 60px auto;
+    text-align: center;
+}
+
+.mainDiv  div{
+    margin: auto;
+    width:fit-content ;
+}
+.mainDiv img{
+    height: 250px;
+}
+.mainDiv span{
+    font-weight: bold;
+}
+
+.mainDiv button{
+    background-color: black;
+    color: white;
+    padding: 10px 30px;
+    font-size: 15px;
+    border: none;
+}

@@ -1,0 +1,218 @@
+.checkout{
+    margin:0px 100px;
+}
+.checkout h1{
+    font-size: 35px;
+    font-family: Helvetica;
+}
+
+.sequrecheckout{
+    display: flex;
+    gap:10px;
+    justify-content: center;
+
+}
+
+.sequrecheckout h5{
+    font-family: Helvetica;
+    font-size: 18px;
+}
+
+.paymentMainDiv{
+    display: flex;
+    width: 80%;
+    margin: auto;
+    /* border: 1px solid black; */
+    gap:10px
+}
+.child1{
+    width: 60%;
+    /* border: 1px solid black; */
+}
+
+.child2{
+    width: 30px;
+    /* border: 1px solid black; */
+}
+.DeleveryInfo {
+    display: flex;
+    justify-content: space-around;
+    gap:20px;
+    background-color: #eee;
+    height: 300px;
+    margin:30px
+}
+.deleveryHeading{
+    width: 30%;
+    /* border: 1px solid black; */
+   
+   
+}
+.deleveryHeading h1{
+    font-size: 35px;
+    font-family: Helvetica;
+    margin: 20px;
+}
+.address{
+    display: flex;
+    /* border:1px solid black; */
+    gap:10px;
+    margin: 20px;
+}
+.address img {
+    width: 20px;
+}
+ .input {
+    padding:15px 20px;
+    margin:20px 20px ;
+    border: none;
+    border-bottom:1px solid black;
+   
+    background-color: #eee;
+    
+}
+.ASAP{
+    display: flex;
+    gap:10px;
+    margin:20px 20px ;
+}
+.deveryOption{
+   
+    background-color: #eee;
+    height: 300px;
+     margin:0px 30px;
+    /* border:1px solid black;/ */
+
+}
+.deleveryOptionchild_1{
+    display: flex;
+    justify-content: space-between;
+    /* border:1px solid black; */
+    width:100%;
+    height: 300px;
+    
+}
+.deleveryHeading2{
+ width: 30%;
+ /* border:1px solid black; */
+ margin: 10px 30px;
+ padding: 30px;
+}
+.a{
+    /* border:1px solid black; */
+    width: 50%;
+    margin:20px
+}
+.LeaveAtMyDoor{
+    display: flex;
+     gap:10px;
+     margin:10px 0px;
+     /* border:1px solid black; */
+   
+}
+.Linstruction {
+   padding: 0px 20px;
+}
+.DeleveryInfo2 {
+    display: flex;
+    justify-content: space-around;
+    gap:20px;
+    background-color: #eee;
+    height: 500px;
+    margin:30px ;
+     /* border: 1px solid black; */
+}
+.InfoInput{
+    margin:30px;
+    /* border: 1px solid black; */
+}
+.InfoInput input {
+    /* border: 1px solid black; */
+    margin:30px;
+    padding:10px 60px;
+    border:none;
+    border-bottom: 1px solid black;
+    background-color: #eee;
+}
+.LeaveAtMyDoor2{
+    display: flex;
+     gap:10px;
+     /* margin:10px 0px; */
+     /* border:1px solid black; */
+   
+}
+.LeaveAtMyDoor2 h4{
+    margin:20px
+}
+.payment{
+    background-color: #eee;
+    margin:10px 20px ;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.payment h1{
+    margin: 40px;
+    font-size: 40px;
+    cursor: pointer;
+    font-family: Helvetica;
+}
+.payment h4{
+    margin: 40px;
+    font-size: 20px;
+    cursor: pointer;
+    font-family: Helvetica;
+    text-decoration: underline;
+
+}
+
+.same{
+    display: flex;
+    justify-content: space-between;
+}
+.same p{
+    font-size: 16px;
+    font-family: Helvetica;
+    font-weight: 500px;
+}
+.cartTotal{
+    /* border:1px solid black; */
+    width: 30%;
+    height: 450px;
+    padding:10px 30px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+.btn button{
+    width: 70%;
+    height: 50px;
+    border-radius: 10px;
+    background-color: #DC143D;
+    color:aliceblue;
+    font-size: 18px;
+    font-family: Helvetica;
+    font-weight: 600;
+    border:none
+}
+#paybtn1 {
+    display: flex;
+    justify-content: space-between;
+    background-color: #e4002b;
+    color: white;
+    cursor: pointer;
+    padding: 5px 50px;
+    border-radius: 20px;
+  }
+  #paybtn2 {
+    display: flex;
+    justify-content: space-between;
+    background-color: #f0c8d0;
+    color: white;
+    cursor: not-allowed;
+    padding: 5px 50px;
+    border-radius: 20px;
+  }
+  #paybtn p {
+    margin: 0px;
+  }
