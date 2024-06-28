@@ -8,10 +8,12 @@
 # testing
 /coverage
 
+.env
 # production
 /build
 
 # misc
+.gitignore
 .DS_Store
 .env.local
 .env.development.local

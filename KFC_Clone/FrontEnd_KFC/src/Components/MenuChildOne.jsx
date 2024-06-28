@@ -1,21 +1,30 @@
 import React from "react";
-import { Box, Image, Text, Button, GridItem, HStack } from "@chakra-ui/react";
 
-export const PeriPeri = ({
-  id,
-  name,
-  price,
+import {
+  Box,
+  Image,
+  Text,
+  Button,
+  Grid,
+  GridItem,
+  HStack,
+} from "@chakra-ui/react";
+const MasterComponentswithQuantity = ({
   image,
-  description,
+  Name,
   icon,
   type,
+  price,
   quantity,
+  Description,
+  Id,
   onClick,
 }) => {
   return (
     <>
-      <GridItem key={id} borderRadius={"5px"}>
+      <GridItem>
         <Image src={image} alt="" width="100%" borderRadius={"10px"} />
+
         <Text
           fontFamily={"National 2 Regular"}
           fontStyle={"normal"}
@@ -25,8 +34,9 @@ export const PeriPeri = ({
           color={"#202124"}
           mb={"5px"}
         >
-          {name}
+          {Name}
         </Text>
+
         <HStack
           color={"#494949"}
           fontSize={"12px"}
@@ -35,18 +45,17 @@ export const PeriPeri = ({
           mb={"5px"}
         >
           <Image src={icon} alt="" />
-          <Text> {type}</Text>
+          <Text>{type}</Text>
           <Text>Serve {quantity}</Text>
         </HStack>
+
         <Box
           color={"#202124"}
           fontWeight={"600"}
           fontSize={"16px"}
           lineHeight={"22px"}
           fontStyle={"normal"}
-        >
-          {`₹${price}`}
-        </Box>
+        >{`₹${price}`}</Box>
 
         <Box
           fontWeight={"600"}
@@ -57,7 +66,7 @@ export const PeriPeri = ({
           textOverflow={"ellipsis"}
           display={"-webkit-box"}
         >
-          {description}
+          {Description}
         </Box>
 
         <Button
@@ -72,9 +81,10 @@ export const PeriPeri = ({
           size="lg"
           onClick={onClick}
         >
-          Add to cart
+          Add To Cart
         </Button>
       </GridItem>
     </>
   );
 };
+export default MasterComponentswithQuantity;

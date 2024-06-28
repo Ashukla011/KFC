@@ -16,7 +16,7 @@ import {
   Heading,
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon, AddIcon } from "@chakra-ui/icons";
-import { Link, } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Account_Icon from "../assets/Account_Icon.svg";
 import bucket_cart_icon from "../assets/bucket_cart_icon.svg";
 
@@ -25,15 +25,22 @@ const Links = [
   { id: 2, linkto: "/Deals", Title: "Deals" },
 ];
 
-
-
 export function WithAction() {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
     <>
-      <Box bg={useColorModeValue("white", "white")} px={4} height={"100px"} mt={{base:"50px",lg:"50px",md:"50px",sm:"5px",xm:"5px"}} >
-        <Flex h={16} alignItems={"center"} justifyContent={"space-around"} >
+      <Box
+        bg={useColorModeValue("white", "white")}
+        px={4}
+        height={"100px"}
+        mt={{ base: "50px", lg: "50px", md: "50px", sm: "5px", xm: "5px" }}
+        position="fixed"
+        top={0}
+        width="100%"
+        zIndex={1000}
+      >
+        <Flex h={16} alignItems={"center"} justifyContent={"space-around"}>
           <IconButton
             size={"md"}
             icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
@@ -72,15 +79,12 @@ export function WithAction() {
               fontSize={"18px"}
               mr={4}
             >
-              <Link to="/Sign"> Sign</Link>
+              <Link to="/Sign"> Sign In</Link>
             </Button>
-            <Divider
-              orientation="vertical"
-              color={"white"}
-              border={"1px solid white"}
-            />
+            <Divider orientation="vertical" color={"grey"} />
             <Menu>
               <Text>₹ 0</Text>
+              <Link to="/Cart">
               <MenuButton
                 as={Button}
                 rounded={"full"}
@@ -88,17 +92,34 @@ export function WithAction() {
                 cursor={"pointer"}
                 minW={0}
               >
-                <Avatar size={"sm"} src={bucket_cart_icon} />
-                <Link to="/Cart"></Link>
+                {" "}
+                <Text
+                  position={"absolute"}
+                  top={"20px"}
+                  left={"25px"}
+                  zIndex={"999"}
+                  fontWeight={"705"}
+                >
+                  0
+                </Text>
+                <Avatar size={"lg"} src={bucket_cart_icon} />
               </MenuButton>
+              </Link>
               
             </Menu>
           </Flex>
         </Flex>
 
         {isOpen ? (
-          <Box pb={4} display={{ md: "none" }}>
-            <Stack as={"nav"} spacing={4}>
+          <Box
+            pb={4}
+            display={{ md: "none" }}
+            zIndex={1000}
+            backgroundColor={"grey"}
+            width={"100%"}
+            height={"100vh"}
+          >
+            <Stack as={"nav"} spacing={4} px={10}>
               {Links.map((link, _i) => (
                 <Heading fontSize="20px" fontFamily="Helvetica" key={_i++}>
                   <Link to={link.linkto}>{link.Title}</Link>
@@ -108,8 +129,6 @@ export function WithAction() {
           </Box>
         ) : null}
       </Box>
-
-   
     </>
   );
 }

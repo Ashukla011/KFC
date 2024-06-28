@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from '../styles/Deals.module.css'
-import { StartOrder } from '../Copments2/StartOrder'
+import { StartOrder } from '../Components/StartOrder'
 import Footer from '../Footer/Footer'
 import { useNavigate } from 'react-router-dom'
 

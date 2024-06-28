@@ -5,14 +5,15 @@ const app = express()
 const {KfcMenuRoute} = require("./routes/KfcMenu.routes")
 const cors = require("cors")
 const {connection} = require("./config/db")
+const { authRoute } = require('./routes/UserAuthRoutes')
 app.use(express.json())
  require("dotenv").config()
 app.use(cors())
 
 
 app.use("/kfc",KfcMenuRoute)
-
-let PORT = process.env.port|| 3500
+app.use("/auth",authRoute)
+let PORT = process.env.port || 3500
 app.listen(PORT , async()=>{
    try{
     await connection,

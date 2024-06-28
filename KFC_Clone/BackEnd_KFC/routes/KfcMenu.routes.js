@@ -5,7 +5,7 @@ const cors = require("cors");
 const app = express();
 app.use(cors());
 
-KfcMenuRoute.get("/Menu", cors(), async (req, res) => {
+KfcMenuRoute.get("/Menu",  async (req, res) => {
   try {
     let data = await KfcMenuModel.find();
     res.send(data);
@@ -26,7 +26,7 @@ KfcMenuRoute.post("/Menuadd", async (req, res) => {
   }
 });
 // Search By titel description price and orther things
-KfcMenuRoute.get("/filterType", cors(), async (req, res) => {
+KfcMenuRoute.get("/filterType",  async (req, res) => {
   const { foodType } = req.query;
   try {
     let data = await KfcMenuModel.find({
@@ -37,16 +37,7 @@ KfcMenuRoute.get("/filterType", cors(), async (req, res) => {
     res.status(400).json({ error: err.message });
   }
 });
-// KfcMenuRoute.get("/filter",(req,res)=>{
-//     const filters = req.query; 
-//   const filteredUsers = new KfcMenuModel.filter(user => { 
-//     let isValid = true; 
-//     for (key in filters) { 
-//       console.log(key, user[key], filters[key]); 
-//       isValid = isValid && user[key] == filters[key]; 
-//     } 
-//     return isValid; 
-//   }); 
-//   res.send(filteredUsers); 
-// })
+
+
+
 module.exports = { KfcMenuRoute };
