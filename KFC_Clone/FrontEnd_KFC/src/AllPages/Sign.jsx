@@ -43,7 +43,7 @@ export const Sign = () => {
      <p>or</p>
       <br/>
 
-      <button  onClick={()=>navigate("/Menu")} className={styles.btn2}>skip continue as guest</button>
+      <button  onClick={()=>navigate("/RestaurentMune")} className={styles.btn2}>skip continue as guest</button>
      </div>
     </div>
   )

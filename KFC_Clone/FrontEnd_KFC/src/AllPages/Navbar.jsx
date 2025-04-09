@@ -19,15 +19,34 @@ import { HamburgerIcon, CloseIcon, AddIcon } from "@chakra-ui/icons";
 import { Link } from "react-router-dom";
 import Account_Icon from "../assets/Account_Icon.svg";
 import bucket_cart_icon from "../assets/bucket_cart_icon.svg";
+import { useEffect, useState } from "react";
 
 const Links = [
   { id: 1, linkto: "/RestaurentMune", Title: "Menu" },
   { id: 2, linkto: "/Deals", Title: "Deals" },
 ];
 
+
 export function WithAction() {
+  const [quantity, setQuantity] = useState(0);
+  const [totalPrice, setTotalPrice] = useState(0);
   const { isOpen, onOpen, onClose } = useDisclosure();
 
+const updateCartData = () => {
+  const localStorageData = JSON.parse(localStorage.getItem("kfcCart")) || [];
+  const newQuantity = localStorageData.reduce((sum, el) => sum + el.quantity, 0);
+  const newTotalPrice = localStorageData.reduce((sum, el) => sum + el.price, 0);
+  setQuantity(newQuantity);
+  setTotalPrice(newTotalPrice);
+};
+
+useEffect(() => {
+  updateCartData();
+ 
+}, []);
+
+
+const TotalPrice = JSON.parse(localStorage.getItem("kfcTotalPrice"))
   return (
     <>
       <Box
@@ -83,7 +102,7 @@ export function WithAction() {
             </Button>
             <Divider orientation="vertical" color={"grey"} />
             <Menu>
-              <Text>₹ 0</Text>
+              <Text>{TotalPrice ?`₹ ${TotalPrice.toFixed(0)}`:0}</Text>
               <Link to="/Cart">
               <MenuButton
                 as={Button}
@@ -100,7 +119,7 @@ export function WithAction() {
                   zIndex={"999"}
                   fontWeight={"705"}
                 >
-                  0
+                  {quantity=== 0 ? "0":quantity}
                 </Text>
                 <Avatar size={"lg"} src={bucket_cart_icon} />
               </MenuButton>
