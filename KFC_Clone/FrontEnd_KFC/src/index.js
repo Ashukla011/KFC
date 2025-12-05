@@ -12,15 +12,22 @@ root.render(
 
 
  
-  <ChakraProvider>
+  // <ChakraProvider>
+  //   <Provider store={store}>
+  //     <BrowserRouter>
+  //    <App />
+  //    </BrowserRouter> 
+  //      </Provider>
+  //    </ChakraProvider> 
+    
     <Provider store={store}>
-      <BrowserRouter>
-     <App />
-     </BrowserRouter> 
-       </Provider>
-     </ChakraProvider> 
-    
-    
+  <ChakraProvider>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </ChakraProvider>
+</Provider>
+
  
 
 );
