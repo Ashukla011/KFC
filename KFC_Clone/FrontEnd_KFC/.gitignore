@@ -11,7 +11,7 @@
 .env
 # production
 /build
-
+./firebase
 # misc
 .gitignore
 .DS_Store

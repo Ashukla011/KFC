@@ -22,13 +22,13 @@ export const Deals = () => {
 
          <div className={styles.offerForYou}>
           <h1>OFFERS FOR YOU </h1>
-          <h5 onClick={()=>navigate('/Sign')}>sign to see exclusive offers & deals</h5>
+          <h5 onClick={()=>navigate('/PhoneLogin')}>sign to see exclusive offers & deals</h5>
          </div>
     
           <div className={styles.Redeem}>
              <div className={styles.box1}>
               <h1>SIGN TO SEE EXCLUSIVE OFFERS & DEALS</h1>
-              <button onClick={()=>navigate("/Sign")}>Sing</button>
+              <button onClick={()=>navigate("/PhoneLogin")}>Sing</button>
              </div>
             
             <div className={styles.box2}>

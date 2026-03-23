@@ -39,12 +39,12 @@ export const Cart = () => {
     setProduct(LocalStorageData);
   };
 
-  const handleRemove = (el,i) =>{
-     let index = Product.findIndex((data)=>data._id == el._id)
-       Product.splice(index,1)
-       setProduct([...Product])
-       console.log("remove")
-  }
+  const handleRemove = (el, i) => {
+    let index = Product.findIndex((data) => data._id == el._id);
+    Product.splice(index, 1);
+    setProduct([...Product]);
+    console.log("remove");
+  };
   const CalculatePrice = () => {
     let kfcProduct = [...Product];
     if (kfcProduct.length > 0) {
@@ -53,7 +53,7 @@ export const Cart = () => {
       setfinalTotal(totalPrice + 18 + 37);
       localStorage.setItem(
         "kfcTotalPrice",
-        JSON.stringify(totalPrice + 18 + 37)
+        JSON.stringify(totalPrice + 18 + 37),
       );
     }
   };
@@ -68,14 +68,14 @@ export const Cart = () => {
     if (productIndex !== -1) {
       Product[productIndex].price += productPrice.price;
       Product[productIndex].quantity += 1;
-        localStorage.setItem("kfcCart", JSON.stringify(Product));
+      localStorage.setItem("kfcCart", JSON.stringify(Product));
 
       // Update total price
       setTotal(total + productPrice.price);
       setfinalTotal(total + productPrice.price + 18 + 37);
       localStorage.setItem(
         "kfcTotalPrice",
-        JSON.stringify(total + productPrice.price + 18 + 37)
+        JSON.stringify(total + productPrice.price + 18 + 37),
       );
     }
   };
@@ -98,7 +98,7 @@ export const Cart = () => {
       setfinalTotal(total - productPrice.price + 18 + 37);
       localStorage.setItem(
         "kfcTotalPrice",
-        JSON.stringify(total - productPrice.price + 2.8 + 37)
+        JSON.stringify(total - productPrice.price + 2.8 + 37),
       );
     }
   };
@@ -159,21 +159,32 @@ export const Cart = () => {
                     sm: "column",
                     lg: "row",
                   }}
-                
-                  width={{base:"100%",sm:'100%',md:"100%",lg:'100%'}}
-                  padding={{base:"20px",sm:'20px',md:'20px',lg:"0px"}}
+                  width={{ base: "100%", sm: "100%", md: "100%", lg: "100%" }}
+                  padding={{ base: "20px", sm: "20px", md: "20px", lg: "0px" }}
                   key={i}
                 >
-                  <Box width={{base:"100%",md:"100%",sm:"100%",lg:"24%"}} padding={"5px"} >
+                  <Box
+                    width={{ base: "100%", md: "100%", sm: "100%", lg: "24%" }}
+                    padding={"5px"}
+                  >
                     <Image
                       src={el.image}
                       alt=""
-                      width={{base:"100%",md:"100%",sm:"100%",lg:"70%"}}
+                      width={{
+                        base: "100%",
+                        md: "100%",
+                        sm: "100%",
+                        lg: "70%",
+                      }}
                       borderRadius={"5px"}
                     />
                   </Box>
 
-                  <Box width={{base:"100%",md:"100%",sm:"100%",lg:"24%"}} padding={"5px"} textAlign={"left"}>
+                  <Box
+                    width={{ base: "100%", md: "100%", sm: "100%", lg: "24%" }}
+                    padding={"5px"}
+                    textAlign={"left"}
+                  >
                     <Text mt={"10px"}>{el.name}</Text>
                     <Button
                       colorScheme="black"
@@ -185,14 +196,18 @@ export const Cart = () => {
                     </Button>
                   </Box>
 
-                  <HStack width={{base:"100%",md:"100%",sm:"100%",lg:"24%"}} padding={"10px"} textAlign ={{base:"left",sm:'left',md:'left'}}>
+                  <HStack
+                    width={{ base: "100%", md: "100%", sm: "100%", lg: "24%" }}
+                    padding={"10px"}
+                    textAlign={{ base: "left", sm: "left", md: "left" }}
+                  >
                     <Button
                       rounded={100}
                       padding={"10px"}
                       fontSize={"18px"}
                       border={"1px solid black"}
                       backgroundColor={"white"}
-                      _hover={{backgroundColor:"white"}}
+                      _hover={{ backgroundColor: "white" }}
                       onClick={() => handleDecrementPrice(el)}
                     >
                       -
@@ -202,7 +217,7 @@ export const Cart = () => {
                       padding={"10px"}
                       fontSize={"18px"}
                       backgroundColor={"white"}
-                      _hover={{backgroundColor:"white"}}
+                      _hover={{ backgroundColor: "white" }}
                     >
                       {el.quantity}
                     </Button>
@@ -211,26 +226,32 @@ export const Cart = () => {
                       padding={"10px"}
                       fontSize={"18px"}
                       backgroundColor={"white"}
-                      _hover={{backgroundColor:"white"}}
+                      _hover={{ backgroundColor: "white" }}
                       border={"1px solid black"}
                       onClick={() => handleIncrementPrice(el)}
                     >
                       +
                     </Button>
                   </HStack>
-                  <Box width={{base:"100%",md:"100%",sm:"100%",lg:"24%"}} mt={{lg:"50px"}} textAlign ={{base:"left",sm:'left',md:'left'}}>{`₹ ${el.price.toFixed(2)}`}</Box>
+                  <Box
+                    width={{ base: "100%", md: "100%", sm: "100%", lg: "24%" }}
+                    mt={{ lg: "50px" }}
+                    textAlign={{ base: "left", sm: "left", md: "left" }}
+                  >{`₹ ${el.price.toFixed(2)}`}</Box>
                 </Flex>
               ))
             )}
 
-            <Flex justifyContent={"space-around"} mt={"20px"}  >
-             {Product.length !==0?  <Button
-                colorScheme="black"
-                variant="link"
-                onClick={() => localStorage.removeItem("kfcCart")}
-              >
-                Remove All
-              </Button>:null}
+            <Flex justifyContent={"space-around"} mt={"20px"}>
+              {Product.length !== 0 ? (
+                <Button
+                  colorScheme="black"
+                  variant="link"
+                  onClick={() => localStorage.removeItem("kfcCart")}
+                >
+                  Remove All
+                </Button>
+              ) : null}
 
               <Button
                 colorScheme="black"
@@ -243,83 +264,88 @@ export const Cart = () => {
             </Flex>
           </Box>
 
-            {Product.length !==0 ? <Box
-          
-          boxShadow={"rgba(0, 0, 0, 0.16) 0px 1px 4px"}
-          width={{ base: "100%", sm: "100%", md: "100%", lg: "40%" }}
-          h={"fit-content"}
-          m={{ base: "auto", md: "auto", sm: "auto", lg: "0px" }}
-          padding={"10px"}
-        >
-          <Heading
-            as={"h1"}
-            textTransform={"uppercase"}
-          >{`${Product.length} Items`}</Heading>
+          {Product.length !== 0 ? (
+            <Box
+              boxShadow={"rgba(0, 0, 0, 0.16) 0px 1px 4px"}
+              width={{ base: "100%", sm: "100%", md: "100%", lg: "40%" }}
+              h={"fit-content"}
+              m={{ base: "auto", md: "auto", sm: "auto", lg: "0px" }}
+              padding={"10px"}
+            >
+              <Heading
+                as={"h1"}
+                textTransform={"uppercase"}
+              >{`${Product.length} Items`}</Heading>
 
-          <Flex
-            justifyContent={"space-between"}
-            mt={"20px"}
-            backgroundColor="#f8f7f5"
-            padding={"20px"}
-          >
-            <Heading as={"h5"} color={"red.600"} size={"md"}>
-              Apply Offers & Deals
-            </Heading>
-            <Button colorScheme="red" size={"sm"} variant={"outline"}>
-              View All
-            </Button>
-          </Flex>
+              <Flex
+                justifyContent={"space-between"}
+                mt={"20px"}
+                backgroundColor="#f8f7f5"
+                padding={"20px"}
+              >
+                <Heading as={"h5"} color={"red.600"} size={"md"}>
+                  Apply Offers & Deals
+                </Heading>
+                <Button colorScheme="red" size={"sm"} variant={"outline"}>
+                  View All
+                </Button>
+              </Flex>
 
-          <Flex justifyContent={"space-between"} mt={"20px"}>
-            <Text>SubTotal</Text>
-            <Text>{`₹ ${total.toFixed(2)}`}</Text>
-          </Flex>
-          <Flex justifyContent={"space-between"} mt={"20px"}>
-            <p>GST</p>
-            <p>{`₹ ${18}%`}</p>
-          </Flex>
+              <Flex justifyContent={"space-between"} mt={"20px"}>
+                <Text>SubTotal</Text>
+                <Text>{`₹ ${total.toFixed(2)}`}</Text>
+              </Flex>
+              <Flex justifyContent={"space-between"} mt={"20px"}>
+                <p>GST</p>
+                <p>{`₹ ${18}%`}</p>
+              </Flex>
 
-          <Flex justifyContent={"space-between"} mt={"20px"}>
-            <Text>Rasturante Handling (Inc.taxes) </Text>
-            <Text>{`₹ ${37}`}</Text>
-          </Flex>
-        <Divider/>
-          <HStack
-            mt={"5px"}
-            border={".5px solid grey"}
-            spacing={"10px"}
-            padding={"5px 5px"}
-          >
-            <Checkbox
-              size={"md"}
-              colorScheme="grey"
-              defaultChecked
-            ></Checkbox>
-            <Text fontSize={"11px"} fontWeight={"100"}>
-              Donate ₹5.00 Tick to Add Hope. Our goal is to feed 20 million
-              people by 2023.
-            </Text>
-            <Image
-              src="https://causemarketing.com/wp-content/uploads/2016/12/add-hope-logo.png"
-              alt=""
-              width={"30%"}
-            />
-          </HStack>
-          <Box m={"auto"} width={""} mt={"20px"}>
-            <Link to="/Payment">
-              <Button
-                size={"lg"}
-                borderRadius={"20px"}
-                colorScheme="red"
-                fontWeight={"700"}
-                border={"none"}
-                width={"100%"}
-                display={"flex"}
-                justifyContent={"space-around"}
-              > <span>Checkout </span> <span>  ₹{finalTotal.toFixed(2)}</span></Button>
-            </Link>
-          </Box>
-        </Box>:null}
+              <Flex justifyContent={"space-between"} mt={"20px"}>
+                <Text>Rasturante Handling (Inc.taxes) </Text>
+                <Text>{`₹ ${37}`}</Text>
+              </Flex>
+              <Divider />
+              <HStack
+                mt={"5px"}
+                border={".5px solid grey"}
+                spacing={"10px"}
+                padding={"5px 5px"}
+              >
+                <Checkbox
+                  size={"md"}
+                  colorScheme="grey"
+                  defaultChecked
+                ></Checkbox>
+                <Text fontSize={"11px"} fontWeight={"100"}>
+                  Donate ₹5.00 Tick to Add Hope. Our goal is to feed 20 million
+                  people by 2023.
+                </Text>
+                <Image
+                  src="https://causemarketing.com/wp-content/uploads/2016/12/add-hope-logo.png"
+                  alt=""
+                  width={"30%"}
+                />
+              </HStack>
+              <Box m={"auto"} width={""} mt={"20px"}>
+                <Link to="/Payment">
+                  <Button
+                    size={"lg"}
+                    borderRadius={"20px"}
+                    colorScheme="red"
+                    fontWeight={"700"}
+                    border={"none"}
+                    width={"100%"}
+                    display={"flex"}
+                    justifyContent={"space-around"}
+                  >
+                    {" "}
+                    <span>Checkout </span>{" "}
+                    <span> ₹{finalTotal.toFixed(2)}</span>
+                  </Button>
+                </Link>
+              </Box>
+            </Box>
+          ) : null}
         </Flex>
       </Center>
       <Footer />

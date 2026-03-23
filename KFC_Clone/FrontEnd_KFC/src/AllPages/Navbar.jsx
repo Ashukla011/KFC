@@ -98,7 +98,7 @@ const TotalPrice = JSON.parse(localStorage.getItem("kfcTotalPrice"))
               fontSize={"18px"}
               mr={4}
             >
-              <Link to="/Sign"> Sign In</Link>
+              <Link to="/PhoneLogin"> Sign In</Link>
             </Button>
             <Divider orientation="vertical" color={"grey"} />
             <Menu>

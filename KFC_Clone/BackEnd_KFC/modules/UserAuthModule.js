@@ -1,11 +1,15 @@
-const mongoose = require("mongoose");
+const mongoose = require("mongoose")
 
-const UserScheema = new mongoose.Schema({
-  Name: { type: String, required: true },
-  Email: { type: String, required: true, unique: true },
-  Password: { type: String, required: true, unique: true },
-  MobileNumber: { type: String, required: true, unique: true },
-});
+const UserSchema = new mongoose.Schema({
+  mobileNumber: {
+    type: String,
+    required: true,
+    unique: true,
+    match: /^[6-9]\d{9}$/
+  },
+}, { timestamps: true });
 
-const UserAuthModule = mongoose.model("auth", UserScheema);
+
+
+const UserAuthModule = mongoose.model("User", UserSchema);
 module.exports = { UserAuthModule };

@@ -1,55 +1,46 @@
 const express = require("express");
 const authRoute = express.Router();
+
+authRoute.use(express.json());
+
+
+const {admin} = require("../firebase");
 const jwt = require("jsonwebtoken");
-const bcrypt = require("bcryptjs");
-const {UserAuthModule} = require("../modules/UserAuthModule");
+const {User} = require("../modules/UserAuthModule");
 
-// User Registration 
-authRoute.post ("/register",async (req,res)=>{
-    try{
-        const {Name,Email,Password,MobileNumber} = req.body;
-        let user = await UserAuthModule.findOne({Email});
-        if(user){
-            res.send({message:"USER IS ALREADY EXISTS"})
-        }
-        else{
-            user = new UserAuthModule({Name,Email,MobileNumber,Password})
-            const salt = await bcrypt.genSalt(10)
-            user.Password =  await bcrypt.hash(Password,salt);
-            await user.save()
-            res.send({message:"USER REGISTERED SUCCSSFULLY"})
-        }
+authRoute.post("/login", async (req, res) => {
+  try {
+    const { token } = req.body;
 
-    }catch(error){
-        res.send({message:"SEARVER ERROR"})
+    // Verify Firebase token
+    const decoded = await admin.auth().verifyIdToken(token);
+    const mobile = decoded.phone_number;
+
+    // Find or create user
+    let user = await User.findOne({ MobileNumber: mobile });
+    if (!user) {
+      user = await User.create({ MobileNumber: mobile });
     }
-})
-// USER LOGIN 
 
-authRoute.post ("/login",async(req,res)=>{
-    try{
-        const {MobileNumber,Password} = req.body
-        let user = await UserAuthModule.findOne({MobileNumber});
-        if(!user){
-            res.send({message:"Invalid Credentials"})
+    // Create JWT
+    const jwtToken = jwt.sign(
+      { id: user._id },
+      process.env.JWT_SECRET,
+      { expiresIn: "1d" }
+    );
 
-        }
-        const isMatch = await bcrypt.compare(Password,user.Password);
-        if(!isMatch){
-            res.send({message:"Invalid Credentials"});
+    res.json({ token: jwtToken });
 
-        }
-       
-        jwt.sign({ userId: user._id },"secret",{expiresIn:"10h"},(err,token)=>{
-            if(err){
-                console.log(err)
-            }else{
-                res.json({token})
-            }
-        })
-    }catch(error){
-  res.send({message:"SERVER ERROR"})
-    }
-})
+  } catch (err) {
+    res.status(401).json({ message: "Invalid token" });
+  }
+});
 
 module.exports = {authRoute}
+
+
+
+
+
+
+

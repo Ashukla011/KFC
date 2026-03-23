@@ -1,6 +1,8 @@
-
 /node_modules
+firebase-key.json
 
-#mis
 .env
+# production
+
+# misc
 .gitignore
