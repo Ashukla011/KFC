@@ -1,6 +1,6 @@
 # Backend Dockerfile
 FROM node:18-bullseye
-# WORKDIR /app
+WORKDIR /BackEnd_KFC
 
 
 # Copy only package files first
