@@ -4,12 +4,14 @@ import { Home } from "./Home";
 import { Deals } from "./Deals";
 import { RestaurentMune } from "./RestaurentMune";
 import { NotFound } from "./NotFound";
-import { Payment } from "./Payment";
-import { PhoneLogin } from "./PhoneLogin";
+import { Login } from "./Login";
+import { Signup } from "./Signup";
+import { OrderSuccess } from "./OrderSuccess";
 import { Cart } from "./Cart";
-import { OrderSummery } from "./OrderSummery";
 import { Adress } from "./Adress";
-import { Otp } from "./Otp";
+import { Payment } from "./Payment";
+import { ForgetPassword } from "./ForgetPassword";
+import { ResetPassword } from "./ResetPassword";
 
 export const AllRouters = () => {
   return (
@@ -18,11 +20,13 @@ export const AllRouters = () => {
       <Route path="/RestaurentMune" element={<RestaurentMune />} />
       <Route path="/Deals" element={<Deals />} />
       <Route path="/Payment" element={<Payment />} />
-      <Route path="/PhoneLogin" element={<PhoneLogin />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/signup" element={<Signup />} />
+      <Route path="/forget-password" element={<ForgetPassword />} />
+      <Route path="/reset-password" element={<ResetPassword />} />
       <Route path="/Cart" element={<Cart />} />
-      <Route path="/OrderSummery" element={<OrderSummery />} />
       <Route path="/Adress" element={<Adress />} />
-      <Route path="/Otp" element={<Otp />} />
+      <Route path="/order-success" element={<OrderSuccess />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

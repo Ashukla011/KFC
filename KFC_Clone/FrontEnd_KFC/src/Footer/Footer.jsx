@@ -1,260 +1,8 @@
-// import React from "react";
-
-// import { MdEditLocation } from "react-icons/md";
-
-// import {
-//   Box,
-//   UnorderedList,
-//   ListItem,
-//   Image,
-//   List,
-//   Text,
-//   useBreakpointValue,
-//    Accordion,
-//   AccordionItem,
-//   AccordionButton,
-//   AccordionPanel,
-//   AccordionIcon,
-// } from "@chakra-ui/react";
-
-
-// import { FooterHome } from "./FooterHome";
-// const Footer = () => {
-//   const [showList1, setShowList1] = React.useState(true);
-//   const [showList2, setShowList2] = React.useState(true);
-//   const [showList3, setShowList3] = React.useState(true);
-//   const [showList4, setShowList4] = React.useState(true);
-
-//   const toggleVisible = useBreakpointValue({
-//     base: true,
-//     sm: false,
-//     md: false,
-//     lg: true,
-//   });
-//   return (
-//     <>
-//       <Box bgColor={"#000"} mt={"50px"} >
-//         <FooterHome />
-//         <Box
-//           display={"flex"}
-//           flexDirection={{ base: "column", md: "column", sm: "column", lg: "row",  }}
-//           justifyContent={"space-between"}
-//           gap={"10px"}
-//           height={"fit-content"}
-//         >
-//           <Image
-//             src="https://images.ctfassets.net/wtodlh47qxpt/25FSYFuEtGct8NSrtpKe6d/b602f6fe0bf294e6a6dff5d7648bf594/KFC_Logo.svg"
-//             alt=""
-//             height={"100px"}
-//           />
-//           <Box margin={"auto"} cursor={"pointer"} textAlign={"left"}>
-//             <List>
-//               <ListItem
-//                 fontSize={"17px"}
-//                 onClick={() => setShowList1(!showList1)}
-//                 color={"#eee"}
-//               >
-//                 Legal
-//               </ListItem>
-//             </List>
-//             {toggleVisible && showList1 && (
-//               <List listStyleType={"none"} color={"#eee"}>
-//                 <ListItem>Terms and Condition</ListItem>
-//                 <ListItem>Privacy Policy</ListItem>
-//                 <ListItem>Disclaimer</ListItem>
-//                 <ListItem>Caution & Notice</ListItem>
-//               </List>
-//             )}
-//           </Box>
-
-//           <Box margin={"auto"} cursor={"pointer"} textAlign={"left"}>
-//             <List>
-//               <ListItem
-//                 fontSize={"17px"}
-//                 onClick={() => setShowList2(!showList2)}
-//                 color={"#eee"}
-//               >
-//                 KFC India
-//               </ListItem>
-//             </List>
-//             {toggleVisible && showList2 && (
-//               <List listStyleType={"none"} color={"#eee"}>
-//                 <ListItem>Menu</ListItem>
-//                 <ListItem>About KFC</ListItem>
-//                 <ListItem>KFC Care</ListItem>
-//                 <ListItem>Careers</ListItem>
-//                 <ListItem>Our Golden Past</ListItem>
-//               </List>
-//             )}
-//           </Box>
-
-//           <Box cursor={"pointer"} margin={"auto"} textAlign={"left"}>
-//             <List>
-//               <ListItem
-//                 fontSize={"17px"}
-//                 onClick={() => setShowList3(!showList3)}
-//                 color={"#eee"}
-//               >
-//                 KFC Food
-//               </ListItem>
-//             </List>
-//             {toggleVisible && showList3 && (
-//               <List listStyleType={"none"} color={"#eee"}>
-//                 <ListItem>Menu</ListItem>
-//                 <ListItem>Order Lookup</ListItem>
-//                 <ListItem>Gift Card</ListItem>
-//                 <ListItem>Nuetrition & Allergen</ListItem>
-//               </List>
-//             )}
-//           </Box>
-
-//           <Box cursor={"pointer"} margin={"auto"} textAlign={"left"}>
-//             <List>
-//               <ListItem
-//                 fontSize={"17px"}
-//                 onClick={() => setShowList4(!showList4)}
-//                 color={"#eee"}
-//               >
-//                 Support
-//               </ListItem>
-//             </List>
-//             {toggleVisible && showList4 && (
-//               <List listStyleType={"none"} color={"#eee"}>
-//                 <ListItem>Get Help</ListItem>
-//                 <ListItem>Contact Us</ListItem>
-//                 <ListItem>KFC Fedback</ListItem>
-//                 <ListItem>Privacy Policy </ListItem>
-//               </List>
-//             )}
-//           </Box>
-
-//           <UnorderedList
-//             listStyleType={"none"}
-//             color={"#eee"}
-//             display={"flex"}
-//             margin={"auto"}
-//           >
-//             <ListItem>
-//               {" "}
-//               <u>
-//                 {" "}
-//                 <MdEditLocation color={"red"} />
-//               </u>
-//             </ListItem>
-//             <u>
-//               {" "}
-//               <ListItem>Find KFC</ListItem>
-//             </u>
-//           </UnorderedList>
-
-//           <UnorderedList
-//             margin={"auto"}
-//             listStyleType={"none"}
-//             display={"flex"}
-//             gap={"5px"}
-//             flexDirection={{
-//               base: "row",
-//               md: "column",
-//               sm: "column",
-//               lg: "row",
-//               xm:"column"
-            
-//             }}
-//           >
-//             <ListItem>
-//               <Image
-//                 src="https://images.ctfassets.net/wtodlh47qxpt/6BdZsyjLn64c06uCIE73d1/fb530f5d5231533b049463f6c7e8a2b1/google_play.svg"
-//                 alt=""
-//               />
-//             </ListItem>
-//             <ListItem>
-//               <Image
-//                 src="https://images.ctfassets.net/wtodlh47qxpt/em3mcMuAdXWlgucSJiTbS/d3ae7e51ed101d829e459355e255c47f/apple.svg"
-//                 alt=""
-//               />
-//             </ListItem>
-//           </UnorderedList>
-//         </Box>
-
-//    <Accordion defaultIndex={[0,1]} allowMultiple display={"flex"} color={"#eee"}>
-//   <AccordionItem>
-//     <h2>
-//       <AccordionButton>
-//         <Box as='span' flex='1' textAlign='left'>
-//           Section 1 title
-//         </Box>
-//         <AccordionIcon />
-//       </AccordionButton>
-//     </h2>
-//     <AccordionPanel pb={4}>
-   
-   
-//     </AccordionPanel>
-//   </AccordionItem>
-
-//   <AccordionItem>
-//     <h2>
-//       <AccordionButton>
-//         <Box as='span' flex='1' textAlign='left'>
-//           Section 2 title
-//         </Box>
-//         <AccordionIcon />
-//       </AccordionButton>
-//     </h2>
-//     <AccordionPanel pb={4}>
-    
-//     </AccordionPanel>
-//   </AccordionItem>
- 
-//   <AccordionItem>
-//     <h2>
-//       <AccordionButton>
-//         <Box as='span' flex='1' textAlign='left'>
-//           Section 2 title
-//         </Box>
-//         <AccordionIcon />
-//       </AccordionButton>
-//     </h2>
-//     <AccordionPanel pb={4}>
-      
-//     </AccordionPanel>
-//   </AccordionItem>
-  
-// </Accordion>
-//       </Box>
-//     </>
-//   );
-// };
-
-// export default Footer;
-
 import React from "react";
 import { MdEditLocation } from "react-icons/md";
-import {
-  Box,
-  UnorderedList,
-  ListItem,
-  Image,
-  List,
-  useBreakpointValue,
-  Accordion,
-  AccordionItem,
-  AccordionButton,
-  AccordionPanel,
-  AccordionIcon,
-} from "@chakra-ui/react";
 import { FooterHome } from "./FooterHome";
 
 const Footer = () => {
- 
-
-  const isAccordion = useBreakpointValue({
-    base: true,
-    md: true,
-    sm:true,
-    lg: false,
-  });
-
   const sectionData = [
     {
       title: "Legal",
@@ -266,7 +14,7 @@ const Footer = () => {
     },
     {
       title: "KFC Food",
-      items: ["Menu", "Order Lookup", "Gift Card", "Nuetrition & Allergen"],
+      items: ["Menu", "Order Lookup", "Gift Card", "Nutrition & Allergen"],
     },
     {
       title: "Support",
@@ -275,79 +23,64 @@ const Footer = () => {
   ];
 
   return (
-    <>
-      <Box bgColor={"#000"} mt={"50px"}>
-        <FooterHome />
+    <footer className="bg-black text-white pt-12">
+      <FooterHome />
 
-        {isAccordion ? (
-          <Accordion color={"#EEEEEE"} border={"none"}>
-            {sectionData.map((section, index) => (
-              <AccordionItem key={index}>
-                <h2>
-                  <AccordionButton>
-                    <Box as="span" flex="1" textAlign="left">
-                      {section.title}
-                    </Box>
-                    <AccordionIcon />
-                  </AccordionButton>
-                </h2>
-                <AccordionPanel pb={4}>
-                  <List listStyleType={"none"} color={"#eee"}>
-                    {section.items.map((item, idx) => (
-                      <ListItem key={idx}>{item}</ListItem>
-                    ))}
-                  </List>
-                </AccordionPanel>
-              </AccordionItem>
-            ))}
-          </Accordion>
-        ) : (
-          <Box display={"flex"} flexDirection={"row"} justifyContent={"space-between"} gap={"10px"} height={"fit-content"} color={"#eee"}>
-           <Image
-            src="https://images.ctfassets.net/wtodlh47qxpt/25FSYFuEtGct8NSrtpKe6d/b602f6fe0bf294e6a6dff5d7648bf594/KFC_Logo.svg"
-            alt=""
-            height={"100px"}
-          />
-            {sectionData.map((section, index) => (
-              <Box key={index} margin={"auto"} cursor={"pointer"} textAlign={"left"}>
-                <List>
-                  <ListItem fontSize={"17px"} color={"#eee"}>
-                    {section.title}
-                  </ListItem>
-                </List>
-              
-                  <List listStyleType={"none"} color={"#eee"}>
-                    {section.items.map((item, idx) => (
-                      <ListItem key={idx}>{item}</ListItem>
-                    ))}
-                  </List>
-               
-              </Box>
-            ))}
+      <div className="max-w-7xl mx-auto px-4 py-16 border-t border-gray-800">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8">
+          {/* Logo Section */}
+          <div className="flex justify-center lg:justify-start">
+            <img
+              src="https://images.ctfassets.net/wtodlh47qxpt/25FSYFuEtGct8NSrtpKe6d/b602f6fe0bf294e6a6dff5d7648bf594/KFC_Logo.svg"
+              alt="KFC Logo"
+              className="h-20"
+            />
+          </div>
 
-            <UnorderedList listStyleType={"none"} color={"#eee"} display={"flex"} margin={"auto"}>
-              <ListItem>
-                <u>
-                  <MdEditLocation color={"red"} />
-                </u>
-              </ListItem>
-              <u>
-                <ListItem>Find KFC</ListItem>
-              </u>
-            </UnorderedList>
+          {/* Links Sections */}
+          {sectionData.map((section, index) => (
+            <div key={index} className="text-center md:text-left">
+              <h3 className="text-lg font-black uppercase tracking-widest mb-6 text-gray-100">{section.title}</h3>
+              <ul className="space-y-4">
+                {section.items.map((item, idx) => (
+                  <li key={idx}>
+                    <button className="text-gray-400 hover:text-white transition-colors text-sm font-medium">
+                      {item}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
 
-            <UnorderedList margin={"auto"} listStyleType={"none"} display={"flex"} gap={"5px"} flexDirection={{ base: "row", md: "column", sm: "column", lg: "row", xm: "column" }}>
-              <ListItem>
-                <Image src="https://images.ctfassets.net/wtodlh47qxpt/6BdZsyjLn64c06uCIE73d1/fb530f5d5231533b049463f6c7e8a2b1/google_play.svg" alt="" />
-              </ListItem>
-              <ListItem>
-                <Image src="https://images.ctfassets.net/wtodlh47qxpt/em3mcMuAdXWlgucSJiTbS/d3ae7e51ed101d829e459355e255c47f/apple.svg" alt="" />
-              </ListItem>
-            </UnorderedList>
-          </Box>
-        )}
-      </Box>
-    </>
+          {/* Find KFC Section */}
+          <div className="flex flex-col items-center lg:items-start lg:col-span-1">
+             <div className="flex items-center space-x-2 group cursor-pointer">
+                <MdEditLocation className="text-red-600 h-6 w-6 group-hover:scale-110 transition-transform" />
+                <span className="font-bold uppercase tracking-widest text-sm border-b-2 border-transparent group-hover:border-white transition-all">Find a KFC</span>
+             </div>
+
+             <div className="mt-8 flex space-x-4">
+               <a href="#" className="hover:opacity-80 transition-opacity">
+                 <img src="https://images.ctfassets.net/wtodlh47qxpt/6BdZsyjLn64c06uCIE73d1/fb530f5d5231533b049463f6c7e8a2b1/google_play.svg" alt="Google Play" className="h-10" />
+               </a>
+               <a href="#" className="hover:opacity-80 transition-opacity">
+                 <img src="https://images.ctfassets.net/wtodlh47qxpt/em3mcMuAdXWlgucSJiTbS/d3ae7e51ed101d829e459355e255c47f/apple.svg" alt="App Store" className="h-10" />
+               </a>
+             </div>
+          </div>
+        </div>
+
+        <div className="mt-16 pt-8 border-t border-gray-900 flex flex-col md:flex-row justify-between items-center text-[10px] text-gray-500 font-bold uppercase tracking-[0.2em]">
+          <p>© Content Copyright 2024 KFC India. All Rights Reserved</p>
+          <div className="flex space-x-6 mt-4 md:mt-0">
+             <a href="#" className="hover:text-white">Instagram</a>
+             <a href="#" className="hover:text-white">Facebook</a>
+             <a href="#" className="hover:text-white">Twitter</a>
+          </div>
+        </div>
+      </div>
+    </footer>
   );
 };
 

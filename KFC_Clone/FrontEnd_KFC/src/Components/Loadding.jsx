@@ -1,27 +1,17 @@
 import React from "react";
-import { Box, Heading, keyframes } from "@chakra-ui/react";
+
 const Loading = () => {
-  const spin = keyframes`
-0% { transform: rotate(0deg); }
-100% { transform: rotate(360deg); }
-`;
   return (
-    <Box
-      display="flex"
-      justifyContent="center"
-      alignItems="center"
-      height="100vh"
-    >
-      <Box
-        className="loader"
-        border="8px solid #f3f3f3"
-        borderTop="8px solid #3498db"
-        borderRadius="50%"
-        width="50px"
-        height="50px"
-        animation={`${spin} 1s linear infinite`}
-      />
-    </Box>
+    <div className="flex items-center justify-center h-screen bg-white/50 fixed inset-0 z-[9999]">
+      <div className="relative flex items-center justify-center">
+        {/* Outer Ring */}
+        <div className="absolute w-16 h-16 border-4 border-gray-100 rounded-full"></div>
+        {/* Spinning Ring */}
+        <div className="w-16 h-16 border-4 border-red-600 border-t-transparent rounded-full animate-spin"></div>
+        {/* Center Dot */}
+        <div className="absolute w-2 h-2 bg-black rounded-full animate-pulse"></div>
+      </div>
+    </div>
   );
 };
 

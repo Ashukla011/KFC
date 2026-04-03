@@ -1,90 +1,41 @@
 import React from "react";
 
-import {
-  Box,
-  Image,
-  Text,
-  Button,
-  Grid,
-  GridItem,
-  HStack,
-} from "@chakra-ui/react";
-const MasterComponentswithQuantity = ({
-  image,
-  Name,
-  icon,
-  type,
-  price,
-  quantity,
-  Description,
-  Id,
-  onClick,
-}) => {
+const MasterComponentswithQuantity = ({ image, Name, price, Description, onClick, badge }) => {
   return (
-    <>
-      <GridItem>
-        <Image src={image} alt="" width="100%" borderRadius={"10px"} />
+    <div className="bg-white rounded-3xl overflow-hidden shadow-sm border border-gray-50 hover:shadow-xl transition-all group flex flex-col">
+      <div className="relative overflow-hidden h-44">
+        <img
+          src={image}
+          alt={Name}
+          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-600"
+        />
+        {badge && (
+          <span className="absolute top-3 left-3 bg-orange-500 text-white text-[9px] font-black px-2 py-1 rounded-full uppercase tracking-widest">
+            {badge}
+          </span>
+        )}
+      </div>
 
-        <Text
-          fontFamily={"National 2 Regular"}
-          fontStyle={"normal"}
-          fontWeight={"600"}
-          fontSize={"16px"}
-          lineHeight={"24px"}
-          color={"#202124"}
-          mb={"5px"}
-        >
+      <div className="p-4 flex flex-col flex-1">
+        <h3 className="font-black text-gray-900 text-sm uppercase tracking-tight line-clamp-1 mb-1">
           {Name}
-        </Text>
-
-        <HStack
-          color={"#494949"}
-          fontSize={"12px"}
-          fontWeight={"400"}
-          lineHeight={"22px"}
-          mb={"5px"}
-        >
-          <Image src={icon} alt="" />
-          <Text>{type}</Text>
-          <Text>Serve {quantity}</Text>
-        </HStack>
-
-        <Box
-          color={"#202124"}
-          fontWeight={"600"}
-          fontSize={"16px"}
-          lineHeight={"22px"}
-          fontStyle={"normal"}
-        >{`₹${price}`}</Box>
-
-        <Box
-          fontWeight={"600"}
-          fontSize={"14px"}
-          fontStyle={"normal"}
-          lineHeight={"24px"}
-          color={"#494949"}
-          textOverflow={"ellipsis"}
-          display={"-webkit-box"}
-        >
+        </h3>
+        <p className="text-gray-400 text-xs line-clamp-2 flex-1 mb-3">
           {Description}
-        </Box>
+        </p>
 
-        <Button
-          padding={"11px 40px"}
-          width={"184px"}
-          height={"44px"}
-          cursor={"pointer"}
-          fontFamily={"National 2 Regular"}
-          textAlign={"center"}
-          margin={"10px"}
-          colorScheme="red"
-          size="lg"
-          onClick={onClick}
-        >
-          Add To Cart
-        </Button>
-      </GridItem>
-    </>
+        <div className="flex items-center justify-between mt-auto">
+          <span className="text-lg font-black text-gray-900">₹{price}</span>
+          <button
+            onClick={onClick}
+            className="w-9 h-9 bg-red-600 rounded-2xl flex items-center justify-center text-white font-black text-xl leading-none hover:bg-black transition-all shadow-lg hover:shadow-red-200 hover:scale-110 active:scale-95"
+          >
+            +
+          </button>
+        </div>
+      </div>
+    </div>
   );
 };
+
 export default MasterComponentswithQuantity;

@@ -1,354 +1,167 @@
-import React, { useCallback, useEffect, useState } from "react";
-import styles from "../styles/Cart.module.css";
-import { Link, Navigate } from "react-router-dom";
-import { StartOrder } from "../Components/StartOrder";
-import { useNavigate } from "react-router-dom";
-import Footer from "../Footer/Footer";
-import lineLogo from "../assets/lineLogo.png";
+import React, { useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchData } from "../Redux/KfcDataSlice";
-import {
-  Box,
-  Button,
-  Center,
-  Checkbox,
-  Divider,
-  Flex,
-  HStack,
-  Heading,
-  Image,
-  Text,
-  useToast,
-} from "@chakra-ui/react";
+import { fetchCart, updateCartQuantity, removeFromCart, clearCartState } from "../Redux/cartSlice";
+import { toast } from "react-toastify";
+import Footer from "../Footer/Footer";
+import Loading from "../Components/Loadding";
+
 export const Cart = () => {
-  const [Product, setProduct] = useState([]);
   const navigate = useNavigate();
-  let [total, setTotal] = useState(0);
-  let [finalTotal, setfinalTotal] = useState(0);
-  let [initialprice, setInitialPrice] = useState(0);
-  const toast = useToast();
   const dispatch = useDispatch();
-
-  const { loading, error, data } = useSelector((state) => state.data);
+  const { items, totalPrice, loading } = useSelector((state) => state.cart);
+  const { isAuthenticated } = useSelector((state) => state.auth);
 
   useEffect(() => {
-    dispatch(fetchData());
-  }, [dispatch]);
-  const fetchLocalData = () => {
-    let LocalStorageData = JSON.parse(localStorage.getItem("kfcCart")) || [];
-    setProduct(LocalStorageData);
+    if (!isAuthenticated) { navigate("/login"); return; }
+    dispatch(fetchCart());
+  }, [dispatch, isAuthenticated, navigate]);
+
+  const handleQty = (foodId, currentQty, delta) => {
+    const newQty = currentQty + delta;
+    if (newQty <= 0) dispatch(removeFromCart(foodId));
+    else dispatch(updateCartQuantity({ foodId, quantity: newQty }));
   };
 
-  const handleRemove = (el, i) => {
-    let index = Product.findIndex((data) => data._id == el._id);
-    Product.splice(index, 1);
-    setProduct([...Product]);
-    console.log("remove");
-  };
-  const CalculatePrice = () => {
-    let kfcProduct = [...Product];
-    if (kfcProduct.length > 0) {
-      let totalPrice = kfcProduct.reduce((sum, el) => sum + el.price, 0);
-      setTotal(totalPrice);
-      setfinalTotal(totalPrice + 18 + 37);
-      localStorage.setItem(
-        "kfcTotalPrice",
-        JSON.stringify(totalPrice + 18 + 37),
-      );
-    }
+  const handleRemove = (foodId) => {
+    dispatch(removeFromCart(foodId)).unwrap()
+      .then(() => toast.success("Removed"))
+      .catch(() => toast.error("Failed"));
   };
 
-  const handleIncrementPrice = (item) => {
-    const productIndex = Product.findIndex((data) => data._id === item._id);
-    const productPrice = data.find((el) => el._id === item._id);
-    console.log("productPrice", productPrice.price);
-    if (item.quantity) {
-      setInitialPrice(item.price);
-    }
-    if (productIndex !== -1) {
-      Product[productIndex].price += productPrice.price;
-      Product[productIndex].quantity += 1;
-      localStorage.setItem("kfcCart", JSON.stringify(Product));
+  const gst = totalPrice * 0.05;
+  const delivery = 37;
+  const grand = totalPrice + gst + delivery;
 
-      // Update total price
-      setTotal(total + productPrice.price);
-      setfinalTotal(total + productPrice.price + 18 + 37);
-      localStorage.setItem(
-        "kfcTotalPrice",
-        JSON.stringify(total + productPrice.price + 18 + 37),
-      );
-    }
-  };
-
-  const handleDecrementPrice = (item) => {
-    const productIndex = Product.findIndex((data) => data._id === item._id);
-    const productPrice = data.find((el) => el._id === item._id);
-    if (productIndex !== -1 && Product[productIndex].quantity > 0) {
-      Product[productIndex].price -= productPrice.price;
-
-      Product[productIndex].quantity -= 1;
-      if (Product[productIndex].quantity === 0) {
-        Product.splice(productIndex, 1); // Remove the item if quantity is zero
-      }
-      setProduct(Product);
-      localStorage.setItem("kfcCart", JSON.stringify(Product));
-
-      // Update total price
-      setTotal(total - productPrice.price);
-      setfinalTotal(total - productPrice.price + 18 + 37);
-      localStorage.setItem(
-        "kfcTotalPrice",
-        JSON.stringify(total - productPrice.price + 2.8 + 37),
-      );
-    }
-  };
-  useEffect(() => {
-    fetchLocalData();
-    CalculatePrice();
-  }, [Product]);
+  if (loading && items.length === 0) return <Loading />;
 
   return (
-    <>
-      <Box mt={"100px"} px={5}>
-        <Image src={lineLogo} alt="" />
-        <Heading
-          as={"h2"}
-          fontSize={"44px"}
-          fontWeight={"700"}
-          fontFamily={"National 2 Condensed"}
-          lineHeight={"44px"}
-          fontStyle={"normal"}
-          textTransform={"uppercase"}
-          color={"#202124"}
-        >
-          my cart
-        </Heading>
-      </Box>
-      <Center>
-        <Flex
-          gap={"10px"}
-          flexDirection={{
-            base: "column",
-            md: "column",
-            sm: "column",
-            lg: "row",
-          }}
-          padding={"20px"}
-        >
-          <Box textAlign={"center"}>
-            {Product.length === 0 ? (
-              <Box>
-                <Image
-                  src="https://online.kfc.co.in/static/media/empty_cart.32f17a45.png"
-                  alt=""
-                  width={"100%"}
-                  height={"400px"}
-                />
-              </Box>
-            ) : (
-              Product &&
-              Product.map((el, i) => (
-                <Flex
-                  backgroundColor="#f8f7f5"
-                  borderRadius="10px"
-                  mt={"10px"}
-                  gap={"10"}
-                  flexDirection={{
-                    base: "column",
-                    md: "column",
-                    sm: "column",
-                    lg: "row",
-                  }}
-                  width={{ base: "100%", sm: "100%", md: "100%", lg: "100%" }}
-                  padding={{ base: "20px", sm: "20px", md: "20px", lg: "0px" }}
-                  key={i}
-                >
-                  <Box
-                    width={{ base: "100%", md: "100%", sm: "100%", lg: "24%" }}
-                    padding={"5px"}
-                  >
-                    <Image
-                      src={el.image}
-                      alt=""
-                      width={{
-                        base: "100%",
-                        md: "100%",
-                        sm: "100%",
-                        lg: "70%",
-                      }}
-                      borderRadius={"5px"}
-                    />
-                  </Box>
+    <div className="bg-[#f7f7f7] min-h-screen pb-20 md:pb-0">
+      <div className="h-14 md:h-16" />
 
-                  <Box
-                    width={{ base: "100%", md: "100%", sm: "100%", lg: "24%" }}
-                    padding={"5px"}
-                    textAlign={"left"}
-                  >
-                    <Text mt={"10px"}>{el.name}</Text>
-                    <Button
-                      colorScheme="black"
-                      variant="link"
-                      mt={"40px"}
-                      onClick={() => handleRemove(el, i)}
-                    >
-                      remove
-                    </Button>
-                  </Box>
+      <div className="max-w-screen-xl mx-auto px-4 md:px-6 py-6 md:py-10">
+        <div className="flex items-center space-x-3 mb-8">
+          <button onClick={() => navigate(-1)} className="p-2 bg-white rounded-2xl shadow-sm hover:shadow-md transition-all">
+            <svg className="w-5 h-5 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+          <h1 className="text-2xl font-black uppercase tracking-tight text-gray-900">My Order</h1>
+          <span className="bg-red-600 text-white text-xs font-black px-3 py-1 rounded-full">{items.reduce((a, i) => a + i.quantity, 0)} items</span>
+        </div>
 
-                  <HStack
-                    width={{ base: "100%", md: "100%", sm: "100%", lg: "24%" }}
-                    padding={"10px"}
-                    textAlign={{ base: "left", sm: "left", md: "left" }}
-                  >
-                    <Button
-                      rounded={100}
-                      padding={"10px"}
-                      fontSize={"18px"}
-                      border={"1px solid black"}
-                      backgroundColor={"white"}
-                      _hover={{ backgroundColor: "white" }}
-                      onClick={() => handleDecrementPrice(el)}
-                    >
-                      -
-                    </Button>
-                    <Button
-                      rounded={100}
-                      padding={"10px"}
-                      fontSize={"18px"}
-                      backgroundColor={"white"}
-                      _hover={{ backgroundColor: "white" }}
-                    >
-                      {el.quantity}
-                    </Button>
-                    <Button
-                      rounded={100}
-                      padding={"10px"}
-                      fontSize={"18px"}
-                      backgroundColor={"white"}
-                      _hover={{ backgroundColor: "white" }}
-                      border={"1px solid black"}
-                      onClick={() => handleIncrementPrice(el)}
-                    >
-                      +
-                    </Button>
-                  </HStack>
-                  <Box
-                    width={{ base: "100%", md: "100%", sm: "100%", lg: "24%" }}
-                    mt={{ lg: "50px" }}
-                    textAlign={{ base: "left", sm: "left", md: "left" }}
-                  >{`₹ ${el.price.toFixed(2)}`}</Box>
-                </Flex>
-              ))
-            )}
+        {items.length === 0 ? (
+          <div className="flex flex-col items-center justify-center py-24 text-center">
+            <div className="text-8xl mb-6">🪣</div>
+            <h2 className="text-2xl font-black uppercase text-gray-900 mb-2">Your bucket is empty</h2>
+            <p className="text-gray-400 font-medium mb-8">Add some finger lickin' good items to get started!</p>
+            <button onClick={() => navigate("/RestaurentMune")}
+              className="bg-red-600 text-white px-10 py-4 rounded-2xl font-black uppercase text-sm shadow-xl hover:bg-black transition-all">
+              Browse Menu
+            </button>
+          </div>
+        ) : (
+          <div className="flex flex-col lg:flex-row gap-8">
+            {/* ─── Item List ─── */}
+            <div className="flex-1 min-w-0 space-y-3">
+              {items.map((item) => (
+                <div key={item.foodId._id} className="bg-white rounded-3xl p-4 flex items-center space-x-4 shadow-sm hover:shadow-md transition-all">
+                  <img src={item.foodId.image} alt={item.foodId.name}
+                    className="w-20 h-20 object-cover rounded-2xl flex-shrink-0 border border-gray-100" />
+                  <div className="flex-1 min-w-0">
+                    <h3 className="font-black text-gray-900 text-sm uppercase tracking-tight line-clamp-1">
+                      {item.foodId.name}
+                    </h3>
+                    <p className="text-lg font-black text-gray-900 mt-1">₹{item.foodId.price}</p>
+                  </div>
+                  <div className="flex items-center space-x-2 flex-shrink-0">
+                    {/* Qty Pill */}
+                    <div className="flex items-center bg-gray-100 rounded-2xl overflow-hidden">
+                      <button onClick={() => handleQty(item.foodId._id, item.quantity, -1)}
+                        className="w-9 h-9 flex items-center justify-center text-gray-700 font-black text-lg hover:bg-gray-200 transition-colors">−</button>
+                      <span className="w-8 text-center font-black text-sm">{item.quantity}</span>
+                      <button onClick={() => handleQty(item.foodId._id, item.quantity, 1)}
+                        className="w-9 h-9 flex items-center justify-center text-red-600 font-black text-lg hover:bg-red-50 transition-colors">+</button>
+                    </div>
+                    {/* Remove */}
+                    <button onClick={() => handleRemove(item.foodId._id)}
+                      className="p-2 text-gray-300 hover:text-red-600 transition-colors">
+                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              ))}
 
-            <Flex justifyContent={"space-around"} mt={"20px"}>
-              {Product.length !== 0 ? (
-                <Button
-                  colorScheme="black"
-                  variant="link"
-                  onClick={() => localStorage.removeItem("kfcCart")}
-                >
-                  Remove All
-                </Button>
-              ) : null}
+              <button onClick={() => navigate("/RestaurentMune")}
+                className="w-full border-2 border-dashed border-gray-300 text-gray-400 rounded-3xl py-4 font-black uppercase text-xs tracking-widest hover:border-red-400 hover:text-red-500 transition-all">
+                + Add More Items
+              </button>
+            </div>
 
-              <Button
-                colorScheme="black"
-                variant="outline"
-                borderRadius={"20px"}
-                onClick={() => navigate("/RestaurentMune")}
-              >
-                Add More items
-              </Button>
-            </Flex>
-          </Box>
+            {/* ─── Order Summary Panel ─── */}
+            <div className="lg:w-96 flex-shrink-0">
+              <div className="bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden sticky top-28">
+                {/* Panel Header */}
+                <div className="bg-red-600 px-6 py-4 flex items-center justify-between">
+                  <h2 className="text-white font-black text-base uppercase tracking-wider">Order Summary</h2>
+                  <span className="text-white font-black text-xl">₹{grand.toFixed(0)}</span>
+                </div>
 
-          {Product.length !== 0 ? (
-            <Box
-              boxShadow={"rgba(0, 0, 0, 0.16) 0px 1px 4px"}
-              width={{ base: "100%", sm: "100%", md: "100%", lg: "40%" }}
-              h={"fit-content"}
-              m={{ base: "auto", md: "auto", sm: "auto", lg: "0px" }}
-              padding={"10px"}
-            >
-              <Heading
-                as={"h1"}
-                textTransform={"uppercase"}
-              >{`${Product.length} Items`}</Heading>
+                {/* Breakdown */}
+                <div className="p-6 space-y-3">
+                  <div className="flex justify-between text-sm text-gray-600 font-medium">
+                    <span>Subtotal ({items.length} items)</span>
+                    <span className="font-bold text-gray-900">₹{totalPrice.toFixed(0)}</span>
+                  </div>
+                  <div className="flex justify-between text-sm text-gray-600 font-medium">
+                    <span>GST (5%)</span>
+                    <span className="font-bold text-gray-900">₹{gst.toFixed(0)}</span>
+                  </div>
+                  <div className="flex justify-between text-sm text-gray-600 font-medium">
+                    <span>Delivery Fee</span>
+                    <span className="font-bold text-gray-900">₹{delivery}</span>
+                  </div>
+                  <div className="border-t border-gray-100 pt-4 flex justify-between font-black text-gray-900">
+                    <span className="text-base uppercase">Total</span>
+                    <span className="text-red-600 text-xl">₹{grand.toFixed(0)}</span>
+                  </div>
+                </div>
 
-              <Flex
-                justifyContent={"space-between"}
-                mt={"20px"}
-                backgroundColor="#f8f7f5"
-                padding={"20px"}
-              >
-                <Heading as={"h5"} color={"red.600"} size={"md"}>
-                  Apply Offers & Deals
-                </Heading>
-                <Button colorScheme="red" size={"sm"} variant={"outline"}>
-                  View All
-                </Button>
-              </Flex>
+                {/* Delivery Address */}
+                <div className="px-6 pb-6">
+                  <div className="bg-gray-50 rounded-2xl p-4 flex items-center justify-between mb-6">
+                    <div className="flex items-center space-x-3">
+                      <div className="w-8 h-8 bg-red-100 rounded-xl flex items-center justify-center">
+                        <svg className="w-4 h-4 text-red-600" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+                        </svg>
+                      </div>
+                      <div>
+                        <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest">Deliver To</p>
+                        <p className="text-sm font-black text-gray-900">Your Address</p>
+                      </div>
+                    </div>
+                    <Link to="/Adress" className="text-xs font-black text-red-600 uppercase hover:underline">Edit</Link>
+                  </div>
 
-              <Flex justifyContent={"space-between"} mt={"20px"}>
-                <Text>SubTotal</Text>
-                <Text>{`₹ ${total.toFixed(2)}`}</Text>
-              </Flex>
-              <Flex justifyContent={"space-between"} mt={"20px"}>
-                <p>GST</p>
-                <p>{`₹ ${18}%`}</p>
-              </Flex>
+                  {/* CTA */}
+                  <Link to="/Adress">
+                    <button className="w-full bg-red-600 hover:bg-black transition-all text-white py-4 rounded-2xl font-black uppercase tracking-wider text-base shadow-xl shadow-red-200 hover:shadow-none">
+                      Checkout
+                    </button>
+                  </Link>
 
-              <Flex justifyContent={"space-between"} mt={"20px"}>
-                <Text>Rasturante Handling (Inc.taxes) </Text>
-                <Text>{`₹ ${37}`}</Text>
-              </Flex>
-              <Divider />
-              <HStack
-                mt={"5px"}
-                border={".5px solid grey"}
-                spacing={"10px"}
-                padding={"5px 5px"}
-              >
-                <Checkbox
-                  size={"md"}
-                  colorScheme="grey"
-                  defaultChecked
-                ></Checkbox>
-                <Text fontSize={"11px"} fontWeight={"100"}>
-                  Donate ₹5.00 Tick to Add Hope. Our goal is to feed 20 million
-                  people by 2023.
-                </Text>
-                <Image
-                  src="https://causemarketing.com/wp-content/uploads/2016/12/add-hope-logo.png"
-                  alt=""
-                  width={"30%"}
-                />
-              </HStack>
-              <Box m={"auto"} width={""} mt={"20px"}>
-                <Link to="/Payment">
-                  <Button
-                    size={"lg"}
-                    borderRadius={"20px"}
-                    colorScheme="red"
-                    fontWeight={"700"}
-                    border={"none"}
-                    width={"100%"}
-                    display={"flex"}
-                    justifyContent={"space-around"}
-                  >
-                    {" "}
-                    <span>Checkout </span>{" "}
-                    <span> ₹{finalTotal.toFixed(2)}</span>
-                  </Button>
-                </Link>
-              </Box>
-            </Box>
-          ) : null}
-        </Flex>
-      </Center>
+                  {/* Payment logos */}
+                  <p className="text-center text-[10px] text-gray-300 font-bold uppercase tracking-widest mt-4">Secure payments via Stripe</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
       <Footer />
-    </>
+    </div>
   );
 };

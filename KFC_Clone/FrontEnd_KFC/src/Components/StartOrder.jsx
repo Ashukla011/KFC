@@ -1,38 +1,38 @@
-import React from "react";
-import styles from "../styles/Order.module.css";
+import React, { useEffect, useState } from "react";
 import { Popup } from "./Popup";
 import { SearchStore } from "./SearchStore";
-import { useEffect, useState } from "react";
 
 export const StartOrder = () => {
   const [activePopup, setactivePopup] = useState(false);
   const [address1, setaddress1] = useState("");
 
   useEffect(() => {
-    let add = JSON.parse(localStorage.getItem("address"));
-
-    setaddress1(add);
-  }, [address1]);
+    const add = JSON.parse(localStorage.getItem("address"));
+    if (add) setaddress1(add);
+  }, []);
 
   return (
-    <div className={styles.secblackmain}>
+    <div className="bg-[#202124] py-4 px-6 flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-8 shadow-inner overflow-hidden">
       {!address1 ? (
         <>
-          <h4 className={styles.selecttext}>
-            LET'S ORDER FOR DELIVERY, PICK UP, OR DINE-IN
+          <h4 className="text-white text-sm font-black uppercase tracking-widest text-center">
+            Let's order for delivery, pick up, or dine-in
           </h4>
           <button
             onClick={() => setactivePopup(true)}
-            className={styles.secblackbut}
+            className="bg-red-600 text-white px-10 py-3 rounded-full font-black uppercase text-sm hover:bg-red-700 transition-all shadow-xl transform hover:scale-[1.02] active:scale-95"
           >
             Start Order
           </button>
         </>
       ) : (
-        <h4 className={styles.selecttext}>{address1}</h4>
+        <div className="flex items-center space-x-3">
+          <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+          <h4 className="text-white text-sm font-bold uppercase tracking-widest">{address1}</h4>
+        </div>
       )}
 
-      <Popup trigger={activePopup} className={styles.popup}>
+      <Popup trigger={activePopup} setactivePopup={setactivePopup}>
         <SearchStore
           address1={address1}
           setaddress1={setaddress1}
