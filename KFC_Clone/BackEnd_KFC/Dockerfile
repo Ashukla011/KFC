@@ -3,12 +3,14 @@ FROM node:18-bullseye
 # WORKDIR /app
 
 
-# Install dependencies
-COPY package*.json ./
-RUN npm install
+# Copy only package files first
+COPY package.json package-lock.json ./
 
-# # Copy source
-# COPY . .
+# Clean + install (stable)
+RUN npm cache clean --force && npm install
+
+# Copy source
+COPY . .
 
 # Expose backend port
 EXPOSE 5000
