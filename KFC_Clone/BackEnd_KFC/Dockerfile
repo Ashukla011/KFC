@@ -1,11 +1,13 @@
 # Backend Dockerfile
-FROM node:18
+FROM node:18-bullseye
 # WORKDIR /app
 
 
-# Install dependencies
-COPY package*.json ./
-RUN npm install
+# Copy only package files first
+COPY package.json package-lock.json ./
+
+# Clean + install (stable)
+RUN npm cache clean --force && npm install
 
 # Copy source
 COPY . .
