@@ -7,8 +7,8 @@ FROM node:18-bullseye
 COPY package*.json ./
 RUN npm install
 
-# Copy source
-COPY . .
+# # Copy source
+# COPY . .
 
 # Expose backend port
 EXPOSE 5000
