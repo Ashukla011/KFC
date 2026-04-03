@@ -3,11 +3,9 @@ FROM node:18-bullseye
 # WORKDIR /app
 
 
-# Copy only package files first
-COPY package.json package-lock.json ./
-
-# Clean + install (stable)
-RUN npm cache clean --force && npm install
+# Install dependencies
+COPY package*.json ./
+RUN npm install
 
 # Copy source
 COPY . .
