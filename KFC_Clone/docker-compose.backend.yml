@@ -15,7 +15,7 @@ services:
       - FIREBASE_CLIENT_EMAIL=${FIREBASE_CLIENT_EMAIL}
       - FIREBASE_PRIVATE_KEY=${FIREBASE_PRIVATE_KEY}
     volumes:
-      - ./BackEnd_KFC:/app
+      - ./BackEnd_KFC
     depends_on:
       - mongo
 
