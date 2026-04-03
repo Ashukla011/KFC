@@ -1,6 +1,6 @@
 # Backend Dockerfile
 FROM node:18-bullseye
-WORKDIR /BackEnd_KFC
+WORKDIR /KFC_Clone/BackEnd_KFC
 
 
 # Install dependencies
