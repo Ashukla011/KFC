@@ -1,20 +1,17 @@
-# Use lightweight Node image
+# Backend Dockerfile
 FROM node:20-alpine
-
-WORKDIR /app
+# WORKDIR /app
 
 # Install dependencies
 COPY package*.json ./
-RUN npm install --omit=dev
+RUN npm install --production
 
-# Copy source code
+# Copy source
 COPY . .
 
-# Set environment variable
-ENV PORT=5000
-
-# Expose port (Render uses PORT env automatically, but this is fine)
+# Expose backend port
 EXPOSE 5000
 
-# Start app
+# Default environment variable in docker-compose
+ENV PORT=5000
 CMD ["npm", "start"]
