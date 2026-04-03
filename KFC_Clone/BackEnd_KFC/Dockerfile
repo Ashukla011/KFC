@@ -1,18 +1,17 @@
-# Backend Dockerfile
 FROM node:18-bullseye
-WORKDIR /KFC_Clone/BackEnd_KFC
 
+WORKDIR /app
+
+# Copy only backend package files
+COPY package*.json ./
 
 # Install dependencies
-COPY package*.json ./
 RUN npm install
 
-# Copy source
+# Copy backend source code
 COPY . .
 
-# Expose backend port
+ENV PORT=5000
 EXPOSE 5000
 
-# Default environment variable in docker-compose
-ENV PORT=5000
 CMD ["npm", "start"]
