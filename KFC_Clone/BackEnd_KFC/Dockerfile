@@ -1,6 +1,6 @@
 FROM node:18-bullseye
 
-WORKDIR /app
+# WORKDIR /app
 
 # Copy only backend package files
 COPY package*.json ./
