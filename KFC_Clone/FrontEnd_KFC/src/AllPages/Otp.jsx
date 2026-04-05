@@ -12,12 +12,8 @@ export const Otp = () => {
    
   
   return (
-    <div >
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
+    <div className='mt-10'>
+     
      <div className={styles.otp}>
       <h2>Enter One-time OTP</h2>
       <div className={styles.otp2}>

@@ -3,7 +3,7 @@ FROM node:18-bullseye
 WORKDIR /app
 
 # Copy only backend package files
-COPY package*.json ./
+COPY package*.json 
 
 # Install dependencies
 RUN npm install

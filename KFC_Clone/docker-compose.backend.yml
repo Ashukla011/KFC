@@ -2,7 +2,7 @@ version: '3.8'
 services:
   backend:
     build:
-      context: ./BackEnd_KFC
+      context: /KFC_Clone/BackEnd_KFC
       dockerfile: Dockerfile
     container_name: kfc_backend
     ports:

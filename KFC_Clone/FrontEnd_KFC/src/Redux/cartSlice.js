@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const API_URL = 'http://localhost:3500/cartApi';
+const API_URL = 'https://backend-kfc.onrender.com/cartApi';
 
 export const fetchCart = createAsyncThunk('cart/fetchCart', async (_, { getState }) => {
   const { auth } = getState();

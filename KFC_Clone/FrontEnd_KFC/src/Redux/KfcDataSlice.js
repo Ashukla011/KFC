@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 export const fetchData = createAsyncThunk('data/fetchData', async () => {
-  const response = await fetch("http://localhost:3500/kfcApi/getItem");
+  const response = await fetch("https://backend-kfc.onrender.com/kfcApi/getItem");
   return response.json();
 });
 

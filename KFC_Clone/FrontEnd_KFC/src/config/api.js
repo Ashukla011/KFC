@@ -4,7 +4,7 @@ import { logout } from '../Redux/authSlice';
 
 // Create axios instance
 const api = axios.create({
-  baseURL: 'http://localhost:3500',
+  baseURL: 'https://backend-kfc.onrender.com',
 });
 
 // Request interceptor to add auth token

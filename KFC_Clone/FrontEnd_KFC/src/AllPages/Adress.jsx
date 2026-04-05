@@ -35,7 +35,7 @@ export const Adress = () => {
   const fetchAddresses = async () => {
     try {
       setLoading(true);
-      const res = await axios.get("http://localhost:3500/addressApi", {
+      const res = await axios.get("https://backend-kfc.onrender.com/addressApi", {
         headers: { Authorization: `Bearer ${token}` }
       });
       setAddresses(res.data);
@@ -62,7 +62,7 @@ export const Adress = () => {
     e.preventDefault();
     try {
       setLoading(true);
-      await axios.post("http://localhost:3500/addressApi", formData, {
+      await axios.post("https://backend-kfc.onrender.com/addressApi", formData, {
         headers: { Authorization: `Bearer ${token}` }
       });
       toast.success("Address added successfully");
@@ -87,7 +87,7 @@ export const Adress = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:3500/addressApi/${id}`, {
+      await axios.delete(`https://backend-kfc.onrender.com/addressApi/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       toast.success("Address deleted");
