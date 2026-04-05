@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import api from "../config/api";
 import { toast } from "react-toastify";
 import Footer from "../Footer/Footer";
@@ -10,7 +10,7 @@ export const Payment = () => {
   const [loading, setLoading] = useState(false);
   const [paymentMethod, setPaymentMethod] = useState("card"); // card | cod
   const { items, totalPrice } = useSelector((state) => state.cart);
-  const { token, isAuthenticated } = useSelector((state) => state.auth);
+  const {  isAuthenticated } = useSelector((state) => state.auth);
   const [address, setAddress] = useState(null);
   
   const navigate = useNavigate();

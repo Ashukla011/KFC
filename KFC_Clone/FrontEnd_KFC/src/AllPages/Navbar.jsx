@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../Redux/authSlice";
 import { fetchCart } from "../Redux/cartSlice";
 import { useEffect } from "react";
-import { Adress } from "./Adress";
+// import { Adress } from "./Adress";
 
 export function WithAction() {
   const dispatch = useDispatch();
@@ -26,8 +26,8 @@ export function WithAction() {
 
   const isActive = (path) => location.pathname === path;
 
-  const address = JSON.parse(localStorage.getItem("selectedAddress"));
-  console.log("select adddress in navbar", address);
+  const address = JSON.parse(localStorage.getItem("selectedAddress")) || { city:"Your City", state:"Your State" };
+  // console.log("select adddress in navbar", address);
   return (
     <>
       {/* ─── Desktop Header (top) ─── */}

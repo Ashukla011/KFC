@@ -61,10 +61,10 @@ const Footer = () => {
              </div>
 
              <div className="mt-8 flex space-x-4">
-               <a href="#" className="hover:opacity-80 transition-opacity">
+               <a href="" className="hover:opacity-80 transition-opacity">
                  <img src="https://images.ctfassets.net/wtodlh47qxpt/6BdZsyjLn64c06uCIE73d1/fb530f5d5231533b049463f6c7e8a2b1/google_play.svg" alt="Google Play" className="h-10" />
                </a>
-               <a href="#" className="hover:opacity-80 transition-opacity">
+               <a href="" className="hover:opacity-80 transition-opacity">
                  <img src="https://images.ctfassets.net/wtodlh47qxpt/em3mcMuAdXWlgucSJiTbS/d3ae7e51ed101d829e459355e255c47f/apple.svg" alt="App Store" className="h-10" />
                </a>
              </div>
@@ -74,9 +74,9 @@ const Footer = () => {
         <div className="mt-16 pt-8 border-t border-gray-900 flex flex-col md:flex-row justify-between items-center text-[10px] text-gray-500 font-bold uppercase tracking-[0.2em]">
           <p>© Content Copyright 2024 KFC India. All Rights Reserved</p>
           <div className="flex space-x-6 mt-4 md:mt-0">
-             <a href="#" className="hover:text-white">Instagram</a>
-             <a href="#" className="hover:text-white">Facebook</a>
-             <a href="#" className="hover:text-white">Twitter</a>
+             <a href="" className="hover:text-white">Instagram</a>
+             <a href="" className="hover:text-white">Facebook</a>
+             <a href="" className="hover:text-white">Twitter</a>
           </div>
         </div>
       </div>

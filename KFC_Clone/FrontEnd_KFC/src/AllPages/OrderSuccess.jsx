@@ -11,7 +11,7 @@ export const OrderSuccess = () => {
   const sessionId = searchParams.get("session_id");
   const [loading, setLoading] = useState(true);
   const [order, setOrder] = useState(null);
-  const { token } = useSelector((state) => state.auth);
+  // const { token } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
